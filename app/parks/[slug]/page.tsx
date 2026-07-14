@@ -29,7 +29,6 @@ export default async function ParkPage({ params }: PageProps) {
       <SiteHeader />
       <main id="main-content" className="experience-page park-experience">
         <section className="experience-hero park-hero">
-          <div className="park-silhouette" aria-hidden="true"><span /><i /><b /></div>
           <div className="shell">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: country.name, href: `/countries/${country.slug}` }, { label: park.name }]} />
             <div className="experience-hero-grid">

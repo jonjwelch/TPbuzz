@@ -27,7 +27,6 @@ export default async function CountryPage({ params }: PageProps) {
       <SiteHeader />
       <main id="main-content" className="experience-page country-experience">
         <section className="experience-hero country-hero">
-          <div className="experience-art" aria-hidden="true"><i /><i /><i /></div>
           <div className="shell">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: country.name }]} />
             <div className="experience-hero-grid">
@@ -37,7 +36,6 @@ export default async function CountryPage({ params }: PageProps) {
                 <p className="experience-tagline">{country.eyebrow}</p>
                 <p className="experience-summary">{country.introduction}</p>
               </div>
-              <div className="country-compass" aria-hidden="true"><span>UK</span><i /></div>
             </div>
             <StatGrid stats={country.stats} />
           </div>
