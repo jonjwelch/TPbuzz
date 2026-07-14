@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://tpbuzz.com"),
   title: "TPbuzz | Where Theme Parks Come Alive",
   description:
-    "TPbuzz is creating a new home for theme park discovery, stories and community.",
+    "Discover theme parks, attractions, stories and planning tools in one connected place.",
 };
 
 export const viewport: Viewport = {
@@ -19,7 +19,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en-GB">
+    <html lang="en-GB" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("tpbuzz-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){document.documentElement.dataset.theme="dark"}})();`,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
