@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type BrandProps = {
   className?: string;
 };
@@ -5,10 +7,16 @@ type BrandProps = {
 export function Brand({ className = "" }: BrandProps) {
   return (
     <a className={`brand ${className}`.trim()} href="#top" aria-label="TPbuzz home">
-      <span className="brand-wordmark" aria-hidden="true">
-        <span className="brand-tp">TP</span>
-        <span className="brand-buzz">buzz</span>
-      </span>
+      <Image
+        className="brand-logo"
+        src="/brand/tpbuzz-logo.png"
+        width={1057}
+        height={370}
+        alt=""
+        aria-hidden="true"
+        priority
+        sizes="(max-width: 760px) 126px, 148px"
+      />
     </a>
   );
 }
