@@ -1,0 +1,48 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  application:
+    name: Application
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=moderate
+
+      - name: Check types
+        run: npm run typecheck
+
+      - name: Build production application
+        run: npm run build
+
+      - name: Check deployment script syntax
+        run: bash -n scripts/deploy.sh
