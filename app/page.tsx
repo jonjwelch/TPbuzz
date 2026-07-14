@@ -55,7 +55,7 @@ export default function Home() {
                 follow what is changing and plan the days you will never forget.
               </p>
               <div className="hero-actions">
-                <ArrowLink href="#explore">Explore the vision</ArrowLink>
+                <ArrowLink href="/countries/united-kingdom">Explore the UK</ArrowLink>
                 <ArrowLink href="#roadmap" variant="secondary">See what comes next</ArrowLink>
               </div>
             </div>

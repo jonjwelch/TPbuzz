@@ -2,9 +2,9 @@ import { Brand } from "./brand";
 import { ThemeToggle } from "./theme-toggle";
 
 const navigation = [
-  ["Explore", "#explore"],
-  ["Why TPbuzz", "#why-tpbuzz"],
-  ["Roadmap", "#roadmap"],
+  ["Explore", "/countries/united-kingdom"],
+  ["Why TPbuzz", "/#why-tpbuzz"],
+  ["Roadmap", "/#roadmap"],
 ] as const;
 
 export function SiteHeader() {

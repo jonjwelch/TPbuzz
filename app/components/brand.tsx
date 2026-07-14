@@ -6,7 +6,7 @@ type BrandProps = {
 
 export function Brand({ className = "" }: BrandProps) {
   return (
-    <a className={`brand ${className}`.trim()} href="#top" aria-label="TPbuzz home">
+    <a className={`brand ${className}`.trim()} href="/" aria-label="TPbuzz home">
       <Image
         className="brand-logo"
         src="/brand/tpbuzz-logo.png"
