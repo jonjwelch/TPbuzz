@@ -28,7 +28,6 @@ export default async function AttractionPage({ params }: PageProps) {
       <SiteHeader />
       <main id="main-content" className="experience-page attraction-experience">
         <section className="experience-hero attraction-hero">
-          <div className="wicker-effigy" aria-hidden="true"><span /><i /><b /></div>
           <div className="shell">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: country.name, href: `/countries/${country.slug}` }, { label: park.name, href: `/parks/${park.slug}` }, { label: attraction.name }]} />
             <div className="experience-hero-grid">
