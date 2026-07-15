@@ -31,6 +31,36 @@ export function StatGrid({ stats }: { stats: Array<{ label: string; value: strin
   );
 }
 
+type AttractionStatIcon = "speed" | "track" | "calendar" | "height";
+
+function StatIcon({ type }: { type: AttractionStatIcon }) {
+  if (type === "speed") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0" /><path d="m12 14 4-5" /><path d="M7 17h10" /></svg>;
+  }
+  if (type === "track") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="2" /><circle cx="18" cy="7" r="2" /><path d="M7.5 15.7c2.2-2.1 2.6-5.1 5.1-6.4 1.3-.7 2.7-.6 3.6-.9" /><path d="M6 19v2M18 3v2" /></svg>;
+  }
+  if (type === "calendar") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" /><path d="M8 3v4M16 3v4M4 10h16" /><path d="M8 14h3M14 14h2M8 17h2" /></svg>;
+  }
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4" /><path d="M5 3h4M5 21h4" /></svg>;
+}
+
+export function AttractionStatGrid({ stats }: { stats: Array<{ label: string; value: string }> }) {
+  const icons: AttractionStatIcon[] = ["speed", "track", "calendar", "height"];
+
+  return (
+    <dl className="experience-stats attraction-stats">
+      {stats.map((stat, index) => (
+        <div key={stat.label}>
+          <span className="attraction-stat-icon"><StatIcon type={icons[index] ?? "track"} /></span>
+          <div className="attraction-stat-copy"><dt>{stat.label}</dt><dd>{stat.value}</dd></div>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 export function Timeline({ entries }: { entries: TimelineEntry[] }) {
   return (
     <ol className="timeline">

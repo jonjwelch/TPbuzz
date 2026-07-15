@@ -51,7 +51,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 148px; }
+html { scroll-behavior: smooth; scroll-padding-top: 166px; }
 
 body {
   margin: 0;
@@ -224,7 +224,7 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .experience-stats dd { margin: 9px 0 0; color: white; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 820; letter-spacing: -.035em; }
 .country-hero { color: white; background-image: linear-gradient(90deg, rgb(5 20 33 / 97%) 0%, rgb(7 28 45 / 86%) 45%, rgb(7 28 45 / 25%) 82%), linear-gradient(to top, rgb(5 20 33 / 72%), transparent 45%), url("/images/experiences/united-kingdom-hero.webp"); background-position: center; background-size: cover; }
 .park-hero { color: white; background-image: linear-gradient(90deg, rgb(5 24 24 / 98%) 0%, rgb(7 30 29 / 88%) 48%, rgb(7 30 29 / 24%) 84%), linear-gradient(to top, rgb(5 22 21 / 76%), transparent 48%), url("/images/experiences/alton-towers-hero.webp"); background-position: center; background-size: cover; }
-.attraction-hero { color: white; background-image: linear-gradient(90deg, rgb(18 10 7 / 98%) 0%, rgb(29 13 8 / 88%) 48%, rgb(29 13 8 / 18%) 84%), linear-gradient(to top, rgb(20 10 7 / 78%), transparent 48%), url("/images/experiences/wicker-man-hero.webp"); background-position: center; background-size: cover; }
+.attraction-hero { color: white; background-image: linear-gradient(90deg, rgb(18 10 7 / 96%) 0%, rgb(29 13 8 / 72%) 42%, rgb(29 13 8 / 8%) 72%), linear-gradient(to top, rgb(20 10 7 / 72%), transparent 48%), url("/images/experiences/wicker-man-hero.webp"); background-position: 60% center; background-size: cover; }
 .experience-art { position: absolute; inset: 0; z-index: -2; }
 .experience-art i { position: absolute; display: block; border: 1px solid rgb(255 255 255 / 12%); border-radius: 50%; }
 .experience-art i:nth-child(1) { top: 14%; right: -8%; width: 680px; height: 680px; }
@@ -315,37 +315,43 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .experience-footer { padding-top: 20px; }
 
 /* Attraction experience template. */
-.attraction-hero .experience-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(300px, 390px); }
-.attraction-score-card { align-self: end; margin-bottom: 10px; padding: 26px; color: white; border: 1px solid rgb(255 255 255 / 18%); border-radius: 28px; background: rgb(17 9 6 / 58%); box-shadow: 0 28px 90px rgb(0 0 0 / 27%); backdrop-filter: blur(18px) saturate(125%); }
-.score-card-topline { display: flex; align-items: center; justify-content: space-between; color: rgb(255 255 255 / 58%); font-size: .65rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+.attraction-hero .experience-hero-grid { grid-template-columns: minmax(0, 760px); min-height: 560px; }
+.attraction-hero-copy { padding-block: 35px; }
+.attraction-stats > div { display: grid; min-height: 132px; grid-template-columns: 48px 1fr; align-items: center; gap: 18px; }
+.attraction-stat-icon { display: grid; width: 46px; height: 46px; place-items: center; color: var(--brand-gold); border: 1px solid rgb(255 255 255 / 15%); border-radius: 14px; background: rgb(255 255 255 / 6%); }
+.attraction-stat-icon svg { width: 25px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.65; }
+.attraction-stat-copy { min-width: 0; }
+.attraction-score-card { align-self: start; padding: 30px; color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-lg); background: linear-gradient(145deg, var(--surface), var(--surface-tint)); box-shadow: var(--shadow-md); }
+.score-card-topline { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .65rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
 .score-card-topline i { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-gold); box-shadow: 0 0 0 6px rgb(244 198 61 / 12%); }
 .score-card-value { display: flex; align-items: baseline; gap: 8px; margin-top: 20px; }
-.score-card-value strong { font-size: clamp(4rem, 7vw, 5.7rem); line-height: .8; letter-spacing: -.09em; }
-.score-card-value span { color: rgb(255 255 255 / 48%); font-size: .8rem; font-weight: 800; }
+.score-card-value strong { color: var(--text-strong); font-size: clamp(4rem, 7vw, 5.7rem); line-height: .8; letter-spacing: -.09em; }
+.score-card-value span { color: var(--subtle); font-size: .8rem; font-weight: 800; }
 .score-card-stars { margin-top: 16px; color: var(--brand-gold); font-size: 1rem; letter-spacing: .16em; }
-.score-card-stars span { color: rgb(255 255 255 / 20%); }
-.attraction-score-card > p { margin: 15px 0 21px; color: rgb(255 255 255 / 58%); font-size: .75rem; line-height: 1.55; }
+.score-card-stars span { color: var(--line-strong); }
+.attraction-score-card > p { margin: 15px 0 21px; color: var(--muted); font-size: .75rem; line-height: 1.55; }
 .attraction-score-card dl { display: grid; gap: 12px; margin: 0; }
 .attraction-score-card dl > div { display: grid; grid-template-columns: 70px 1fr; align-items: center; gap: 12px; }
-.attraction-score-card dt { color: rgb(255 255 255 / 62%); font-size: .66rem; font-weight: 760; }
-.attraction-score-card dd { height: 5px; margin: 0; overflow: hidden; border-radius: 8px; background: rgb(255 255 255 / 12%); }
+.attraction-score-card dt { color: var(--muted); font-size: .66rem; font-weight: 760; }
+.attraction-score-card dd { height: 5px; margin: 0; overflow: hidden; border-radius: 8px; background: var(--line); }
 .attraction-score-card dd span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand-coral), var(--brand-gold)); }
-.attraction-subnav { position: sticky; top: 76px; z-index: 40; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 91%, transparent); box-shadow: 0 12px 34px rgb(5 20 31 / 7%); backdrop-filter: blur(18px) saturate(140%); }
-.attraction-subnav-inner { display: flex; min-height: 64px; align-items: center; gap: 30px; }
-.attraction-subnav-title { flex: 0 0 auto; color: var(--text-strong); font-size: .72rem; font-weight: 850; }
-.attraction-subnav-links { display: flex; min-width: 0; align-self: stretch; gap: 28px; overflow-x: auto; scrollbar-width: none; }
+.attraction-subnav { position: sticky; top: 76px; z-index: 40; color: white; border-bottom: 1px solid rgb(255 255 255 / 9%); background: rgb(8 28 45 / 96%); box-shadow: 0 16px 40px rgb(5 20 31 / 18%); backdrop-filter: blur(18px) saturate(140%); }
+.attraction-subnav-inner { display: flex; min-height: 82px; align-items: center; gap: clamp(32px, 5vw, 70px); }
+.attraction-subnav-title { display: flex; flex: 0 0 auto; align-items: center; gap: 11px; color: white; font-size: .8rem; font-weight: 850; }
+.attraction-subnav-title i { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-coral); box-shadow: 0 0 0 6px rgb(242 105 92 / 12%); }
+.attraction-subnav-links { display: flex; min-width: 0; align-self: stretch; gap: clamp(24px, 3vw, 42px); overflow-x: auto; scrollbar-width: none; }
 .attraction-subnav-links::-webkit-scrollbar { display: none; }
-.attraction-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: var(--muted); font-size: .72rem; font-weight: 760; text-decoration: none; }
-.attraction-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 3px; content: ""; background: var(--brand-coral); scale: 0 1; transition: scale 180ms var(--ease-out); }
-.attraction-subnav-links a:hover { color: var(--text-strong); }
-.attraction-subnav-links a:hover::after { scale: 1; }
-.attraction-overview-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(370px, .72fr); align-items: stretch; gap: clamp(50px, 8vw, 110px); }
+.attraction-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: rgb(255 255 255 / 60%); font-size: .83rem; font-weight: 760; text-decoration: none; transition: color 180ms var(--ease-out); }
+.attraction-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 4px; content: ""; background: var(--brand-gold); scale: 0 1; transition: scale 180ms var(--ease-out); }
+.attraction-subnav-links a:hover, .attraction-subnav-links a.is-active { color: white; }
+.attraction-subnav-links a:hover::after, .attraction-subnav-links a.is-active::after { scale: 1; }
+.attraction-overview-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(330px, 400px); align-items: start; gap: clamp(50px, 8vw, 110px); }
 .attraction-overview-copy h2, .attraction-reviews-section h2, .attraction-next-card h2 { margin: 0; color: var(--text-strong); font-size: clamp(3rem, 5.2vw, 5.4rem); line-height: .91; letter-spacing: -.07em; }
 .attraction-overview-copy > p:not(.eyebrow) { max-width: 690px; color: var(--muted); line-height: 1.8; }
 .attraction-overview-copy .overview-lede { margin-top: 30px; color: var(--text); font-size: 1.15rem; }
 .attraction-tags { display: flex; flex-wrap: wrap; gap: 9px; margin: 32px 0 0; padding: 0; list-style: none; }
 .attraction-tags li { padding: 10px 14px; color: var(--text-strong); border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: .7rem; font-weight: 800; }
-.overview-image-card { position: relative; display: grid; min-height: 520px; align-content: space-between; padding: 28px; overflow: hidden; color: white; border-radius: var(--radius-xl); background-image: linear-gradient(to top, rgb(18 8 5 / 96%), transparent 65%), url("/images/experiences/wicker-man-hero.webp"); background-position: 73% center; background-size: cover; box-shadow: var(--shadow-md); }
+.overview-image-card { position: relative; display: grid; min-height: 460px; align-content: space-between; margin-top: 64px; padding: 28px; overflow: hidden; color: white; border-radius: var(--radius-xl); background-image: linear-gradient(to top, rgb(18 8 5 / 96%), transparent 65%), url("/images/experiences/wicker-man-hero.webp"); background-position: center 59%; background-size: cover; box-shadow: var(--shadow-md); }
 .overview-image-card::after { position: absolute; inset: 15px; content: ""; pointer-events: none; border: 1px solid rgb(255 255 255 / 15%); border-radius: calc(var(--radius-xl) - 13px); }
 .overview-image-card > span { position: relative; z-index: 2; justify-self: start; padding: 9px 12px; border: 1px solid rgb(255 255 255 / 18%); border-radius: 999px; background: rgb(0 0 0 / 22%); font-size: .62rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; backdrop-filter: blur(12px); }
 .overview-image-card > div { position: relative; z-index: 2; padding: 8px; }
@@ -398,6 +404,7 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 }
 
 @media (max-width: 760px) {
+  html { scroll-padding-top: 144px; }
   .shell { width: min(100% - 32px, var(--shell)); }
   .header-inner { grid-template-columns: 1fr auto; min-height: 68px; }
   .brand-logo { width: 126px; }
@@ -424,10 +431,13 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .experience-hero { padding-top: 100px; }
   .country-hero { background-position: 68% center; }
   .park-hero { background-position: 67% center; }
-  .attraction-hero { background-position: 70% center; }
+  .attraction-hero { background-image: linear-gradient(90deg, rgb(18 10 7 / 94%), rgb(29 13 8 / 44%)), linear-gradient(to top, rgb(20 10 7 / 74%), transparent 48%), url("/images/experiences/wicker-man-hero.webp"); background-position: 68% center; }
   .breadcrumbs { margin-bottom: 40px; }
   .experience-hero-grid { min-height: 440px; padding-bottom: 52px; }
-  .attraction-hero .experience-hero-grid { gap: 34px; }
+  .attraction-hero .experience-hero-grid { min-height: 570px; }
+  .attraction-stats > div { min-height: 112px; grid-template-columns: 40px 1fr; gap: 12px; padding-inline: 14px; }
+  .attraction-stat-icon { width: 38px; height: 38px; border-radius: 12px; }
+  .attraction-stat-icon svg { width: 21px; }
   .attraction-score-card { margin-bottom: 0; padding: 22px; }
   .experience-hero h1 { font-size: clamp(3.5rem, 17vw, 5.2rem); }
   .experience-stats { grid-template-columns: 1fr 1fr; }
@@ -435,7 +445,7 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .experience-stats > div:nth-child(2) { border-right: 0; }
   .experience-section { padding: 80px 0; }
   .attraction-subnav { top: 68px; }
-  .attraction-subnav-inner { min-height: 58px; }
+  .attraction-subnav-inner { min-height: 68px; }
   .attraction-subnav-title { display: none; }
   .attraction-subnav-links { gap: 22px; }
   .overview-image-card { min-height: 430px; border-radius: 28px; }
