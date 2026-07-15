@@ -126,10 +126,10 @@ export const attractions: Attraction[] = [
     trackLength: "Over 2,000 ft",
     thrillLevel: "High",
     stats: [
-      { label: "Ride type", value: "Wooden coaster" },
+      { label: "Top speed", value: "44 mph" },
+      { label: "Track length", value: "Over 2,000 ft" },
       { label: "Opened", value: "2018" },
       { label: "Minimum height", value: "1.2 m" },
-      { label: "Manufacturer", value: "GCI" },
     ],
     experience: [
       {

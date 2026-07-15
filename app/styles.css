@@ -51,7 +51,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+html { scroll-behavior: smooth; scroll-padding-top: 148px; }
 
 body {
   margin: 0;
@@ -314,6 +314,71 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .ride-facts-panel dd { margin: 0; color: #f4f8fa; font-size: .84rem; font-weight: 800; }
 .experience-footer { padding-top: 20px; }
 
+/* Attraction experience template. */
+.attraction-hero .experience-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(300px, 390px); }
+.attraction-score-card { align-self: end; margin-bottom: 10px; padding: 26px; color: white; border: 1px solid rgb(255 255 255 / 18%); border-radius: 28px; background: rgb(17 9 6 / 58%); box-shadow: 0 28px 90px rgb(0 0 0 / 27%); backdrop-filter: blur(18px) saturate(125%); }
+.score-card-topline { display: flex; align-items: center; justify-content: space-between; color: rgb(255 255 255 / 58%); font-size: .65rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+.score-card-topline i { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-gold); box-shadow: 0 0 0 6px rgb(244 198 61 / 12%); }
+.score-card-value { display: flex; align-items: baseline; gap: 8px; margin-top: 20px; }
+.score-card-value strong { font-size: clamp(4rem, 7vw, 5.7rem); line-height: .8; letter-spacing: -.09em; }
+.score-card-value span { color: rgb(255 255 255 / 48%); font-size: .8rem; font-weight: 800; }
+.score-card-stars { margin-top: 16px; color: var(--brand-gold); font-size: 1rem; letter-spacing: .16em; }
+.score-card-stars span { color: rgb(255 255 255 / 20%); }
+.attraction-score-card > p { margin: 15px 0 21px; color: rgb(255 255 255 / 58%); font-size: .75rem; line-height: 1.55; }
+.attraction-score-card dl { display: grid; gap: 12px; margin: 0; }
+.attraction-score-card dl > div { display: grid; grid-template-columns: 70px 1fr; align-items: center; gap: 12px; }
+.attraction-score-card dt { color: rgb(255 255 255 / 62%); font-size: .66rem; font-weight: 760; }
+.attraction-score-card dd { height: 5px; margin: 0; overflow: hidden; border-radius: 8px; background: rgb(255 255 255 / 12%); }
+.attraction-score-card dd span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand-coral), var(--brand-gold)); }
+.attraction-subnav { position: sticky; top: 76px; z-index: 40; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 91%, transparent); box-shadow: 0 12px 34px rgb(5 20 31 / 7%); backdrop-filter: blur(18px) saturate(140%); }
+.attraction-subnav-inner { display: flex; min-height: 64px; align-items: center; gap: 30px; }
+.attraction-subnav-title { flex: 0 0 auto; color: var(--text-strong); font-size: .72rem; font-weight: 850; }
+.attraction-subnav-links { display: flex; min-width: 0; align-self: stretch; gap: 28px; overflow-x: auto; scrollbar-width: none; }
+.attraction-subnav-links::-webkit-scrollbar { display: none; }
+.attraction-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: var(--muted); font-size: .72rem; font-weight: 760; text-decoration: none; }
+.attraction-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 3px; content: ""; background: var(--brand-coral); scale: 0 1; transition: scale 180ms var(--ease-out); }
+.attraction-subnav-links a:hover { color: var(--text-strong); }
+.attraction-subnav-links a:hover::after { scale: 1; }
+.attraction-overview-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(370px, .72fr); align-items: stretch; gap: clamp(50px, 8vw, 110px); }
+.attraction-overview-copy h2, .attraction-reviews-section h2, .attraction-next-card h2 { margin: 0; color: var(--text-strong); font-size: clamp(3rem, 5.2vw, 5.4rem); line-height: .91; letter-spacing: -.07em; }
+.attraction-overview-copy > p:not(.eyebrow) { max-width: 690px; color: var(--muted); line-height: 1.8; }
+.attraction-overview-copy .overview-lede { margin-top: 30px; color: var(--text); font-size: 1.15rem; }
+.attraction-tags { display: flex; flex-wrap: wrap; gap: 9px; margin: 32px 0 0; padding: 0; list-style: none; }
+.attraction-tags li { padding: 10px 14px; color: var(--text-strong); border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: .7rem; font-weight: 800; }
+.overview-image-card { position: relative; display: grid; min-height: 520px; align-content: space-between; padding: 28px; overflow: hidden; color: white; border-radius: var(--radius-xl); background-image: linear-gradient(to top, rgb(18 8 5 / 96%), transparent 65%), url("/images/experiences/wicker-man-hero.webp"); background-position: 73% center; background-size: cover; box-shadow: var(--shadow-md); }
+.overview-image-card::after { position: absolute; inset: 15px; content: ""; pointer-events: none; border: 1px solid rgb(255 255 255 / 15%); border-radius: calc(var(--radius-xl) - 13px); }
+.overview-image-card > span { position: relative; z-index: 2; justify-self: start; padding: 9px 12px; border: 1px solid rgb(255 255 255 / 18%); border-radius: 999px; background: rgb(0 0 0 / 22%); font-size: .62rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; backdrop-filter: blur(12px); }
+.overview-image-card > div { position: relative; z-index: 2; padding: 8px; }
+.overview-image-card strong { display: block; font-size: 2rem; letter-spacing: -.05em; }
+.overview-image-card p { max-width: 300px; margin: 8px 0 0; color: rgb(255 255 255 / 65%); font-size: .8rem; line-height: 1.6; }
+.experience-story-section { background: linear-gradient(180deg, transparent, var(--page-soft)); }
+.attraction-gallery-section { background: var(--page-soft); }
+.attraction-gallery { display: grid; grid-template-columns: 1.35fr .65fr; grid-template-rows: 260px 260px; gap: 14px; }
+.gallery-frame { position: relative; min-height: 0; margin: 0; overflow: hidden; border-radius: var(--radius-md); background-image: linear-gradient(to top, rgb(17 8 5 / 82%), transparent 58%), url("/images/experiences/wicker-man-hero.webp"); background-size: cover; box-shadow: var(--shadow-sm); }
+.gallery-frame-wide { grid-row: 1 / 3; background-position: 42% center; }
+.gallery-frame-high { background-position: 78% 34%; }
+.gallery-frame-low { background-position: 65% 77%; }
+.gallery-frame figcaption { position: absolute; right: 22px; bottom: 20px; left: 22px; display: flex; align-items: end; justify-content: space-between; gap: 20px; color: white; }
+.gallery-frame figcaption span { color: var(--brand-gold); font-size: .65rem; font-weight: 850; letter-spacing: .12em; }
+.gallery-frame figcaption strong { font-size: 1rem; }
+.attraction-reviews-section { color: white; background: #190e0b; }
+.review-preview-grid { display: grid; grid-template-columns: 1fr .72fr; align-items: center; gap: clamp(60px, 10vw, 140px); }
+.attraction-reviews-section h2 { color: white; }
+.review-preview-grid > div:first-child > p:last-child { max-width: 620px; margin: 28px 0 0; color: rgb(255 255 255 / 58%); line-height: 1.75; }
+.review-coming-card { padding: 34px; border: 1px solid rgb(255 255 255 / 12%); border-radius: var(--radius-lg); background: rgb(255 255 255 / 5%); box-shadow: 0 30px 90px rgb(0 0 0 / 22%); }
+.review-coming-label { color: var(--brand-gold); font-size: .64rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.review-score-preview { display: flex; align-items: baseline; gap: 8px; margin-top: 28px; }
+.review-score-preview strong { font-size: 5rem; line-height: .8; }
+.review-score-preview span { color: rgb(255 255 255 / 40%); font-size: .8rem; }
+.review-coming-card > p { margin: 25px 0; color: rgb(255 255 255 / 57%); font-size: .82rem; line-height: 1.65; }
+.review-audiences { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 20px; border-top: 1px solid rgb(255 255 255 / 10%); }
+.review-audiences span { padding: 8px 10px; border: 1px solid rgb(255 255 255 / 12%); border-radius: 999px; font-size: .62rem; font-weight: 750; }
+.attraction-next-section { padding-block: 80px; }
+.attraction-next-card { display: flex; align-items: end; justify-content: space-between; gap: 50px; padding: 56px; border: 1px solid var(--line); border-radius: var(--radius-xl); background: linear-gradient(135deg, var(--surface), var(--surface-tint)); box-shadow: var(--shadow-sm); }
+.attraction-next-card h2 { font-size: clamp(2.7rem, 4.6vw, 4.8rem); }
+.attraction-next-card p:last-child { max-width: 650px; color: var(--muted); line-height: 1.7; }
+.attraction-next-card .button { flex: 0 0 auto; }
+
 @media (max-width: 1020px) {
   .hero { min-height: auto; }
   .hero-grid { grid-template-columns: 1fr; }
@@ -323,6 +388,9 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .discovery-card:last-child { grid-column: 1 / -1; }
   .signal-layout { grid-template-columns: 1fr; }
   .experience-hero-grid { grid-template-columns: 1fr; }
+  .attraction-hero .experience-hero-grid, .attraction-overview-grid, .review-preview-grid { grid-template-columns: 1fr; }
+  .attraction-score-card { width: min(440px, 100%); justify-self: start; }
+  .attraction-overview-grid { gap: 46px; }
   .country-compass { display: none; }
   .experience-section-heading, .region-panel, .ride-facts-panel { grid-template-columns: 1fr; gap: 36px; }
   .highlight-grid, .experience-act-grid { grid-template-columns: 1fr 1fr; }
@@ -359,11 +427,18 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .attraction-hero { background-position: 70% center; }
   .breadcrumbs { margin-bottom: 40px; }
   .experience-hero-grid { min-height: 440px; padding-bottom: 52px; }
+  .attraction-hero .experience-hero-grid { gap: 34px; }
+  .attraction-score-card { margin-bottom: 0; padding: 22px; }
   .experience-hero h1 { font-size: clamp(3.5rem, 17vw, 5.2rem); }
   .experience-stats { grid-template-columns: 1fr 1fr; }
   .experience-stats > div { min-height: 96px; padding: 22px 18px; border-bottom: 1px solid rgb(255 255 255 / 11%); }
   .experience-stats > div:nth-child(2) { border-right: 0; }
   .experience-section { padding: 80px 0; }
+  .attraction-subnav { top: 68px; }
+  .attraction-subnav-inner { min-height: 58px; }
+  .attraction-subnav-title { display: none; }
+  .attraction-subnav-links { gap: 22px; }
+  .overview-image-card { min-height: 430px; border-radius: 28px; }
   .experience-section-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 38px; }
   .destination-card { min-height: 500px; }
   .destination-card::after { background: linear-gradient(to top, rgb(3 15 24 / 96%), rgb(3 15 24 / 18%) 75%); }
@@ -381,6 +456,10 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .timeline li { grid-template-columns: 1fr; gap: 10px; min-height: 172px; padding-left: 48px; }
   .timeline li::before { top: 4px; left: 10px; }
   .ride-facts-panel dl > div { grid-template-columns: 1fr; gap: 7px; }
+  .attraction-gallery { grid-template-columns: 1fr; grid-template-rows: 380px 230px 230px; }
+  .gallery-frame-wide { grid-row: auto; }
+  .review-coming-card { padding: 26px; }
+  .attraction-next-card { align-items: stretch; flex-direction: column; padding: 34px 26px; border-radius: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
