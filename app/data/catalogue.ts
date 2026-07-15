@@ -4,6 +4,23 @@ export type TimelineEntry = {
   description: string;
 };
 
+export type AttractionCategory = "Thrill rides" | "Family rides" | "Children's rides" | "Indoor attractions";
+
+export type AttractionDirectoryItem = {
+  slug: string;
+  parkSlug: string;
+  name: string;
+  type: string;
+  tagline: string;
+  status: "Operating" | "Seasonal" | "Closed";
+  minimumHeight: string;
+  area: string;
+  categories: AttractionCategory[];
+  heroImage: string;
+  imageLabel: string;
+  hasGuide: boolean;
+};
+
 export type Country = {
   slug: string;
   name: string;
@@ -57,6 +74,8 @@ export type Attraction = {
   topSpeed: string;
   trackLength: string;
   thrillLevel: string;
+  area: string;
+  categories: AttractionCategory[];
   heroImage: string;
   imageLabel: string;
   stats: Array<{ label: string; value: string }>;
@@ -192,6 +211,8 @@ export const attractions: Attraction[] = [
     topSpeed: "44 mph",
     trackLength: "Over 2,000 ft",
     thrillLevel: "High",
+    area: "Mutiny Bay",
+    categories: ["Thrill rides"],
     heroImage: "/images/experiences/wicker-man-hero.webp",
     imageLabel: "Generated concept image",
     stats: [
@@ -252,6 +273,8 @@ export const attractions: Attraction[] = [
     topSpeed: "81 km/h",
     trackLength: "716 m",
     thrillLevel: "Extreme",
+    area: "Forbidden Valley",
+    categories: ["Thrill rides"],
     heroImage: "/images/experiences/nemesis-reborn-generated.webp",
     imageLabel: "Generated concept image",
     stats: [
@@ -303,6 +326,8 @@ export const attractions: Attraction[] = [
     topSpeed: "85 km/h",
     trackLength: "1,170 m",
     thrillLevel: "Extreme",
+    area: "X-Sector",
+    categories: ["Thrill rides"],
     heroImage: "/images/experiences/the-smiler-generated.webp",
     imageLabel: "Generated concept image",
     stats: [
@@ -353,6 +378,8 @@ export const attractions: Attraction[] = [
     topSpeed: "110 km/h",
     trackLength: "373 m",
     thrillLevel: "Extreme",
+    area: "X-Sector",
+    categories: ["Thrill rides"],
     heroImage: "/images/experiences/oblivion-generated.webp",
     imageLabel: "Generated concept image",
     stats: [
@@ -391,6 +418,65 @@ export const attractions: Attraction[] = [
   },
 ];
 
+export const attractionPreviews: AttractionDirectoryItem[] = [
+  {
+    slug: "th13teen",
+    parkSlug: "alton-towers",
+    name: "TH13TEEN",
+    type: "Family drop coaster",
+    tagline: "The forest has found you.",
+    status: "Operating",
+    minimumHeight: "1.2 m",
+    area: "Dark Forest",
+    categories: ["Thrill rides", "Family rides"],
+    heroImage: "/images/experiences/th13teen-generated.webp",
+    imageLabel: "Generated concept image",
+    hasGuide: false,
+  },
+  {
+    slug: "the-curse-at-alton-manor",
+    parkSlug: "alton-towers",
+    name: "The Curse at Alton Manor",
+    type: "Haunted dark ride",
+    tagline: "She just wants to play.",
+    status: "Operating",
+    minimumHeight: "0.9 m",
+    area: "Gloomy Wood",
+    categories: ["Family rides", "Indoor attractions"],
+    heroImage: "/images/experiences/curse-at-alton-manor-generated.webp",
+    imageLabel: "Generated concept image",
+    hasGuide: false,
+  },
+  {
+    slug: "runaway-mine-train",
+    parkSlug: "alton-towers",
+    name: "Runaway Mine Train",
+    type: "Powered family coaster",
+    tagline: "Choo choo!",
+    status: "Operating",
+    minimumHeight: "1.1 m",
+    area: "Katanga Canyon",
+    categories: ["Family rides"],
+    heroImage: "/images/experiences/runaway-mine-train-generated.webp",
+    imageLabel: "Generated concept image",
+    hasGuide: false,
+  },
+  {
+    slug: "octonauts-rollercoaster-adventure",
+    parkSlug: "alton-towers",
+    name: "Octonauts Rollercoaster Adventure",
+    type: "Junior roller coaster",
+    tagline: "A first coaster adventure.",
+    status: "Operating",
+    minimumHeight: "0.9 m",
+    area: "CBeebies Land",
+    categories: ["Children's rides", "Family rides"],
+    heroImage: "/images/experiences/octonauts-generated.webp",
+    imageLabel: "Generated concept image",
+    hasGuide: false,
+  },
+];
+
 export function getCountry(slug: string) {
   return countries.find((country) => country.slug === slug);
 }
@@ -401,4 +487,25 @@ export function getPark(slug: string) {
 
 export function getAttraction(slug: string) {
   return attractions.find((attraction) => attraction.slug === slug);
+}
+
+export function getParkAttractionDirectory(parkSlug: string): AttractionDirectoryItem[] {
+  const publishedGuides = attractions
+    .filter((attraction) => attraction.parkSlug === parkSlug)
+    .map((attraction) => ({
+      slug: attraction.slug,
+      parkSlug: attraction.parkSlug,
+      name: attraction.name,
+      type: attraction.type,
+      tagline: attraction.tagline,
+      status: attraction.status,
+      minimumHeight: attraction.minimumHeight,
+      area: attraction.area,
+      categories: attraction.categories,
+      heroImage: attraction.heroImage,
+      imageLabel: attraction.imageLabel,
+      hasGuide: true,
+    }));
+
+  return [...publishedGuides, ...attractionPreviews.filter((attraction) => attraction.parkSlug === parkSlug)];
 }

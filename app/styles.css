@@ -442,15 +442,53 @@ a.park-action-button:hover .park-action-icon { scale: 1.05; background: rgb(255 
 .park-action-button:hover .visit-card-arrow { color: var(--brand-gold); transform: translate(2px, -2px); }
 .park-action-preview { cursor: default; }
 .park-rides-section { padding-block: 64px !important; }
+.park-directory { margin-top: 8px; }
+.park-directory-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 28px; padding: 22px 24px; border: 1px solid rgb(255 255 255 / 11%); border-radius: 22px; background: rgb(255 255 255 / 5%); box-shadow: 0 24px 70px rgb(0 0 0 / 14%); }
+.park-directory-search { width: min(560px, 100%); }
+.park-directory-search label { display: block; margin-bottom: 9px; color: rgb(255 255 255 / 54%); font-size: .62rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+.park-directory-search > div { display: grid; min-height: 52px; grid-template-columns: 22px 1fr; align-items: center; gap: 12px; padding: 0 17px; border: 1px solid rgb(255 255 255 / 13%); border-radius: 15px; background: rgb(2 13 18 / 48%); transition: border-color 180ms var(--ease-out), background 180ms var(--ease-out); }
+.park-directory-search > div:focus-within { border-color: rgb(244 198 61 / 60%); background: rgb(2 13 18 / 72%); box-shadow: 0 0 0 4px rgb(244 198 61 / 10%); }
+.park-directory-search svg { width: 20px; fill: none; stroke: var(--brand-gold); stroke-linecap: round; stroke-width: 1.8; }
+.park-directory-search input { width: 100%; min-width: 0; color: white; border: 0; outline: 0; background: transparent; font: inherit; font-size: .86rem; }
+.park-directory-search input::placeholder { color: rgb(255 255 255 / 34%); }
+.park-directory-search input::-webkit-search-cancel-button { filter: invert(1); opacity: .55; }
+.park-directory-count { display: flex; flex: 0 0 auto; align-items: baseline; gap: 9px; color: rgb(255 255 255 / 48%); }
+.park-directory-count strong { color: white; font-size: 2rem; line-height: 1; letter-spacing: -.06em; }
+.park-directory-count span { font-size: .7rem; font-weight: 750; }
+.park-directory-filters { display: flex; gap: 9px; margin: 18px 0 28px; overflow-x: auto; scrollbar-width: none; }
+.park-directory-filters::-webkit-scrollbar { display: none; }
+.park-directory-filters button { display: flex; min-height: 42px; flex: 0 0 auto; align-items: center; gap: 10px; padding: 0 14px; color: rgb(255 255 255 / 58%); border: 1px solid rgb(255 255 255 / 11%); border-radius: 999px; background: rgb(255 255 255 / 4%); font: inherit; font-size: .7rem; font-weight: 760; cursor: pointer; transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out), background 180ms var(--ease-out); }
+.park-directory-filters button:hover { color: white; border-color: rgb(255 255 255 / 24%); }
+.park-directory-filters button.is-active { color: #071b20; border-color: var(--brand-gold); background: var(--brand-gold); }
+.park-directory-filters button b { display: grid; min-width: 21px; height: 21px; place-items: center; padding-inline: 5px; color: currentColor; border-radius: 999px; background: rgb(255 255 255 / 10%); font-size: .58rem; }
+.park-directory-filters button.is-active b { background: rgb(7 27 32 / 10%); }
 .park-attraction-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.park-directory-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .park-attraction-card { position: relative; display: grid; min-height: 370px; align-content: end; padding: 30px; overflow: hidden; color: white; border: 1px solid rgb(255 255 255 / 10%); border-radius: var(--radius-lg); background: #102433; box-shadow: var(--shadow-md); text-decoration: none; isolation: isolate; }
 .park-attraction-card::after { position: absolute; inset: 0; z-index: -1; content: ""; background: linear-gradient(to top, rgb(4 14 22 / 96%) 2%, rgb(4 14 22 / 26%) 74%); }
 .park-attraction-card img { z-index: -2; object-fit: cover; transition: scale 550ms var(--ease-out); }
-.park-attraction-card:hover img { scale: 1.035; }
+.park-attraction-card[href]:hover img { scale: 1.035; }
 .park-card-image-label { position: absolute; top: 22px; left: 22px; z-index: 2; padding: 7px 9px; color: rgb(255 255 255 / 64%); border: 1px solid rgb(255 255 255 / 16%); border-radius: 999px; background: rgb(3 14 20 / 35%); font-size: .55rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; backdrop-filter: blur(10px); }
+.park-directory-card { min-height: 390px; padding: 25px; }
+.park-directory-card.is-preview { cursor: default; }
+.park-directory-status { position: absolute; top: 22px; right: 22px; z-index: 2; display: flex; align-items: center; gap: 7px; padding: 7px 9px; color: rgb(255 255 255 / 74%); border: 1px solid rgb(255 255 255 / 16%); border-radius: 999px; background: rgb(3 14 20 / 46%); font-size: .55rem; font-weight: 800; text-transform: uppercase; backdrop-filter: blur(10px); }
+.park-directory-status i { width: 6px; height: 6px; border-radius: 50%; background: var(--brand-mint); box-shadow: 0 0 0 4px rgb(79 211 178 / 12%); }
 .park-attraction-card-copy span { color: var(--brand-gold); font-size: .65rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
 .park-attraction-card-copy h3 { margin: 9px 0 0; color: white; font-size: clamp(2.2rem, 4vw, 4rem); line-height: .92; letter-spacing: -.065em; }
 .park-attraction-card-copy p { margin: 12px 0 0; color: rgb(255 255 255 / 68%); font-weight: 650; }
+.park-directory-card .park-attraction-card-copy h3 { font-size: clamp(2rem, 3vw, 3rem); }
+.park-card-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0 0; padding: 17px 0 0; border-top: 1px solid rgb(255 255 255 / 13%); }
+.park-card-facts > div { min-width: 0; }
+.park-card-facts dt { color: rgb(255 255 255 / 42%); font-size: .53rem; font-weight: 820; letter-spacing: .09em; text-transform: uppercase; }
+.park-card-facts dd { margin: 5px 0 0; overflow: hidden; color: white; font-size: .68rem; font-weight: 720; text-overflow: ellipsis; white-space: nowrap; }
+.park-guide-state { display: flex; min-height: 37px; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding: 0 12px; color: rgb(255 255 255 / 48%); border: 1px solid rgb(255 255 255 / 10%); border-radius: 10px; background: rgb(255 255 255 / 5%); font-size: .63rem; font-weight: 760; }
+.park-guide-state.is-published { color: #071b20; border-color: var(--brand-gold); background: var(--brand-gold); }
+.park-guide-state b { font-size: .78rem; }
+.park-directory-empty { padding: 70px 28px; text-align: center; border: 1px dashed rgb(255 255 255 / 16%); border-radius: var(--radius-lg); background: rgb(255 255 255 / 3%); }
+.park-directory-empty > span { color: var(--brand-gold); font-size: .62rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.park-directory-empty h3 { margin: 12px 0 0; color: white; font-size: 2rem; }
+.park-directory-empty p { margin: 9px 0 22px; color: rgb(255 255 255 / 50%); }
+.park-directory-empty button { padding: 11px 16px; color: #071b20; border: 0; border-radius: 999px; background: var(--brand-gold); font: inherit; font-size: .7rem; font-weight: 800; cursor: pointer; }
 .park-attraction-card .card-arrow { top: 28px; right: 28px; }
 .park-discovery-section { background: var(--page-soft); }
 .park-section-intro { display: grid; grid-template-columns: 1fr .64fr; align-items: end; gap: 70px; margin-bottom: 42px; }
@@ -503,6 +541,7 @@ a.park-action-button:hover .park-action-icon { scale: 1.05; background: rgb(255 
   .park-action-button { flex: 0 0 220px; scroll-snap-align: start; }
   .park-score-card { width: min(620px, 100%); }
   .park-section-intro { grid-template-columns: 1fr; gap: 24px; }
+  .park-directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .park-subnav-title { display: none; }
   .park-hero-v2 h1 { white-space: normal; }
 }
@@ -546,6 +585,12 @@ a.park-action-button:hover .park-action-icon { scale: 1.05; background: rgb(255 
   .park-overview-grid { gap: 38px; }
   .park-attraction-grid { grid-template-columns: 1fr; }
   .park-attraction-card { min-height: 330px; padding: 24px; }
+  .park-directory-toolbar { align-items: stretch; flex-direction: column; padding: 18px; }
+  .park-directory-count { justify-content: flex-end; }
+  .park-directory-filters { margin-right: -16px; padding-right: 16px; }
+  .park-directory-grid { grid-template-columns: 1fr; }
+  .park-directory-card { min-height: 390px; }
+  .park-directory-status { top: 20px; right: 20px; }
   .park-score-layout { grid-template-columns: 1fr 1.15fr; }
   .park-story-grid { grid-template-columns: 1fr; grid-template-rows: 390px 260px 240px; }
   .park-story-card-wide { grid-row: auto; }

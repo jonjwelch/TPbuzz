@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowIcon, Breadcrumbs, ExperienceFooter, Timeline } from "../../components/experience";
+import { Breadcrumbs, ExperienceFooter, Timeline } from "../../components/experience";
+import { ParkAttractionDirectory } from "../../components/park-attraction-directory";
 import { ParkSubnav } from "../../components/park-subnav";
 import { ParkQuickActions } from "../../components/park-visit-dashboard";
 import { SiteHeader } from "../../components/site-header";
-import { getAttraction, getCountry, getPark, parks } from "../../data/catalogue";
+import { getCountry, getPark, getParkAttractionDirectory, parks } from "../../data/catalogue";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -24,7 +24,7 @@ export default async function ParkPage({ params }: PageProps) {
   if (!park) notFound();
   const country = getCountry(park.countrySlug);
   if (!country) notFound();
-  const featuredAttractions = park.attractionSlugs.map(getAttraction).filter((attraction) => attraction !== undefined);
+  const parkAttractions = getParkAttractionDirectory(park.slug);
 
   return (
     <>
@@ -82,16 +82,7 @@ export default async function ParkPage({ params }: PageProps) {
               <div><p className="eyebrow">Rides &amp; attractions</p><h2>Choose your next adventure.</h2></div>
               <p>Explore every connected ride guide, from essential statistics and accessibility details to history, reviews and live information.</p>
             </div>
-            <div className="park-attraction-grid">
-              {featuredAttractions.map((attraction) => (
-                <Link className="park-attraction-card" href={`/attractions/${attraction.slug}`} key={attraction.slug}>
-                  <Image src={attraction.heroImage} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" />
-                  <span className="park-card-image-label">{attraction.imageLabel}</span>
-                  <div className="park-attraction-card-copy"><span>{attraction.type}</span><h3>{attraction.name}</h3><p>{attraction.tagline}</p></div>
-                  <ArrowIcon />
-                </Link>
-              ))}
-            </div>
+            <ParkAttractionDirectory attractions={parkAttractions} />
           </div>
         </section>
 
