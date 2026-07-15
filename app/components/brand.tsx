@@ -8,14 +8,24 @@ export function Brand({ className = "" }: BrandProps) {
   return (
     <a className={`brand ${className}`.trim()} href="/" aria-label="TPbuzz home">
       <Image
-        className="brand-logo"
-        src="/brand/tpbuzz-logo.png"
-        width={1057}
-        height={370}
+        className="brand-logo brand-logo-light"
+        src="/brand/tpbuzz-logo.svg"
+        width={860}
+        height={210}
         alt=""
         aria-hidden="true"
         priority
-        sizes="(max-width: 760px) 126px, 148px"
+        sizes="(max-width: 760px) 156px, 184px"
+      />
+      <Image
+        className="brand-logo brand-logo-dark"
+        src="/brand/tpbuzz-logo-reversed.svg"
+        width={860}
+        height={210}
+        alt=""
+        aria-hidden="true"
+        priority
+        sizes="(max-width: 760px) 156px, 184px"
       />
     </a>
   );
