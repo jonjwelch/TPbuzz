@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const sections = [
   { id: "overview", label: "Overview" },
   { id: "attractions", label: "Rides & attractions" },
-  { id: "plan", label: "Plan your visit" },
   { id: "history", label: "History" },
   { id: "reviews", label: "Reviews" },
 ];

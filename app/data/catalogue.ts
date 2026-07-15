@@ -27,6 +27,19 @@ export type Park = {
   attractionSlugs: string[];
   stats: Array<{ label: string; value: string }>;
   highlights: Array<{ title: string; description: string }>;
+  overview: {
+    paragraphs: string[];
+    tags: string[];
+    score: string;
+    ratingSignals: Array<{ label: string; value: number }>;
+  };
+  visit: {
+    tickets: { value: string; note: string; href: string };
+    openingTimes: { value: string; note: string; href: string };
+    weather: { value: string; note: string };
+    queues: { value: string; note: string; href: string };
+    map: { note: string; href: string };
+  };
   timeline: TimelineEntry[];
 };
 
@@ -101,6 +114,44 @@ export const parks: Park[] = [
         description: "Hotels, waterpark experiences and seasonal events turn a visit into a wider resort stay.",
       },
     ],
+    overview: {
+      paragraphs: [
+        "Alton Towers is shaped by its historic estate. Gardens, woodland paths and dramatic changes in terrain make moving through the resort part of the experience.",
+        "Use this overview to check the essentials for your visit, then move straight into the rides and attractions below.",
+      ],
+      tags: ["Destination resort", "Major thrill rides", "Historic gardens"],
+      score: "9.1",
+      ratingSignals: [
+        { label: "Thrills", value: 92 },
+        { label: "Atmosphere", value: 91 },
+        { label: "Families", value: 82 },
+      ],
+    },
+    visit: {
+      tickets: {
+        value: "Book online",
+        note: "Advance booking recommended",
+        href: "https://www.altontowers.com/tickets-passes/",
+      },
+      openingTimes: {
+        value: "From 10am",
+        note: "Closing time varies · check today",
+        href: "https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/",
+      },
+      weather: {
+        value: "Live weather",
+        note: "Forecast connection coming soon",
+      },
+      queues: {
+        value: "View queue times",
+        note: "Available through the official resort app",
+        href: "https://www.altontowers.com/plan-your-visit/resort-information/mobile-app/",
+      },
+      map: {
+        note: "Explore the theme park and wider resort",
+        href: "https://www.altontowers.com/plan-your-visit/resort-information/attraction-maps/",
+      },
+    },
     timeline: [
       { year: "1860", title: "The gardens open", description: "The estate begins welcoming paying visitors to its celebrated grounds." },
       { year: "1980", title: "The Corkscrew era", description: "A new generation of major rides accelerates the park's transformation." },

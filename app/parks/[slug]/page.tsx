@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowIcon, Breadcrumbs, ExperienceFooter, ParkStatGrid, Timeline } from "../../components/experience";
 import { ParkSubnav } from "../../components/park-subnav";
+import { ParkVisitDashboard } from "../../components/park-visit-dashboard";
 import { SiteHeader } from "../../components/site-header";
 import { getAttraction, getCountry, getPark, parks } from "../../data/catalogue";
 
@@ -17,12 +18,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const park = getPark((await params).slug);
   return park ? { title: `${park.name} | TPbuzz`, description: park.summary } : {};
 }
-
-const ratingSignals = [
-  { label: "Thrills", value: 92 },
-  { label: "Atmosphere", value: 91 },
-  { label: "Families", value: 82 },
-];
 
 export default async function ParkPage({ params }: PageProps) {
   const park = getPark((await params).slug);
@@ -58,29 +53,49 @@ export default async function ParkPage({ params }: PageProps) {
         <ParkSubnav parkName={park.name} />
 
         <section className="experience-section park-overview-section" id="overview">
-          <div className="shell park-overview-grid">
-            <div className="park-overview-copy">
-              <p className="eyebrow">Park overview</p>
-              <p>Alton Towers is not a park laid out on a blank canvas. Historic gardens, woodland paths and dramatic changes in terrain shape how every part of the resort is discovered.</p>
-              <p>Its biggest attractions sit alongside quiet corners and traces of the estate that came before them, creating a day that can feel both intensely energetic and unexpectedly restorative.</p>
-              <ul className="park-tags" aria-label="Park highlights">
-                <li>Destination resort</li><li>Major thrill rides</li><li>Historic gardens</li>
-              </ul>
-            </div>
-            <aside className="park-score-card" aria-label="TPbuzz park preview rating">
-              <p className="park-score-label">TPbuzz preview</p>
-              <div className="park-score-layout">
-                <div className="park-score-number"><strong>9.1</strong><span>/ 10</span><div aria-label="Four and a half stars">★★★★<i>★</i></div></div>
-                <dl className="park-rating-signals">
-                  {ratingSignals.map((signal) => <div key={signal.label}><dt>{signal.label}</dt><dd><span style={{ width: `${signal.value}%` }} /></dd></div>)}
-                </dl>
+          <div className="shell">
+            <div className="park-overview-grid">
+              <div className="park-overview-copy">
+                <p className="eyebrow">Park overview</p>
+                {park.overview.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                <ul className="park-tags" aria-label="Park highlights">
+                  {park.overview.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                </ul>
               </div>
-              <p className="park-score-note">An editorial preview while community ratings and verified visit data are being built.</p>
-            </aside>
+              <aside className="park-score-card" aria-label="TPbuzz park preview rating">
+                <p className="park-score-label">TPbuzz preview</p>
+                <div className="park-score-layout">
+                  <div className="park-score-number"><strong>{park.overview.score}</strong><span>/ 10</span><div aria-label="Four and a half stars">★★★★<i>★</i></div></div>
+                  <dl className="park-rating-signals">
+                    {park.overview.ratingSignals.map((signal) => <div key={signal.label}><dt>{signal.label}</dt><dd><span style={{ width: `${signal.value}%` }} /></dd></div>)}
+                  </dl>
+                </div>
+                <p className="park-score-note">An editorial preview while community ratings and verified visit data are being built.</p>
+              </aside>
+            </div>
+            <ParkVisitDashboard park={park} />
           </div>
         </section>
 
-        <section className="experience-section park-discovery-section" id="attractions">
+        <section className="experience-section featured-dark-section park-rides-section" id="attractions">
+          <div className="shell">
+            <div className="park-section-intro park-section-intro-light">
+              <div><p className="eyebrow">Rides &amp; attractions</p><h2>Choose your next adventure.</h2></div>
+              <p>Explore every connected ride guide, from essential statistics and accessibility details to history, reviews and live information.</p>
+            </div>
+            <div className="park-attraction-grid">
+              {featuredAttractions.map((attraction) => (
+                <Link className="park-attraction-card" href={`/attractions/${attraction.slug}`} key={attraction.slug}>
+                  <Image src={`/images/experiences/${attraction.slug}-hero.webp`} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" />
+                  <div className="park-attraction-card-copy"><span>{attraction.type}</span><h3>{attraction.name}</h3><p>{attraction.tagline}</p></div>
+                  <ArrowIcon />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="experience-section park-discovery-section">
           <div className="shell">
             <div className="park-section-intro">
               <div><p className="eyebrow">Discover the resort</p><h2>More than the headline rides.</h2></div>
@@ -98,35 +113,6 @@ export default async function ParkPage({ params }: PageProps) {
               <article className="park-story-card park-story-card-detail">
                 <span className="park-story-index">01 / 03</span><div><span>Plan the whole day</span><h3>One connected resort</h3><p>Rides, gardens, hotels and seasonal experiences brought into one guide.</p></div>
               </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="experience-section featured-dark-section park-featured-section">
-          <div className="shell">
-            <div className="park-section-intro park-section-intro-light">
-              <div><p className="eyebrow">Featured attraction</p><h2>Meet the flames.</h2></div>
-              <p>Start with one of the resort’s most distinctive modern stories, then follow every connected detail.</p>
-            </div>
-            <div className="feature-link-grid">
-              {featuredAttractions.map((attraction) => (
-                <Link className="destination-card ride-destination-card" href={`/attractions/${attraction.slug}`} key={attraction.slug}>
-                  <div className="destination-art wicker-art" aria-hidden="true"><i /><i /><i /></div>
-                  <div className="destination-copy"><span>{attraction.type}</span><h2>{attraction.name}</h2><p>{attraction.tagline}</p></div>
-                  <ArrowIcon />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="experience-section park-planning-section" id="plan">
-          <div className="shell">
-            <div className="park-section-intro"><div><p className="eyebrow">Plan your visit</p><h2>Know before you go.</h2></div><p>The live planning layer will eventually bring today’s hours, queues, weather and practical guidance together here.</p></div>
-            <div className="park-planning-grid">
-              <article><span>01</span><h3>Opening &amp; access</h3><p>Seasonal hours, travel information and arrival guidance.</p><b>Live data coming next</b></article>
-              <article><span>02</span><h3>Build your day</h3><p>Balance headline rides, quieter experiences and time to explore.</p><b>Planning tools in development</b></article>
-              <article><span>03</span><h3>Stay at the resort</h3><p>Compare hotels and understand how a short break changes the visit.</p><b>Accommodation guide planned</b></article>
             </div>
           </div>
         </section>
