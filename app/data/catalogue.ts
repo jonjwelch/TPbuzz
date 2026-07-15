@@ -29,6 +29,20 @@ export type Country = {
   parkSlugs: string[];
   stats: Array<{ label: string; value: string }>;
   regions: string[];
+  parkDirectory: CountryParkDirectoryItem[];
+};
+
+export type CountryParkCategory = "Thrill parks" | "Family parks" | "Destination resorts" | "Seaside parks";
+
+export type CountryParkDirectoryItem = {
+  slug: string;
+  name: string;
+  location: string;
+  type: string;
+  summary: string;
+  image: string;
+  categories: CountryParkCategory[];
+  hasGuide: boolean;
 };
 
 export type Park = {
@@ -105,12 +119,20 @@ export const countries: Country[] = [
       "From historic seaside parks to story-led destination resorts, explore the places, attractions and moments that shaped the UK's theme park landscape.",
     parkSlugs: ["alton-towers"],
     stats: [
-      { label: "Parks in this preview", value: "01" },
-      { label: "Featured attractions", value: "01" },
-      { label: "Featured park origins", value: "1860" },
+      { label: "Parks in this preview", value: "06" },
+      { label: "Nations to explore", value: "04" },
+      { label: "Published park guides", value: "01" },
       { label: "Coverage status", value: "Growing" },
     ],
     regions: ["England", "Scotland", "Wales", "Northern Ireland"],
+    parkDirectory: [
+      { slug: "alton-towers", name: "Alton Towers Resort", location: "Staffordshire, England", type: "Destination resort", summary: "Woodland, gardens and ambitious attractions across a historic estate.", image: "/images/parks/alton-towers/hero-generated.webp", categories: ["Thrill parks", "Family parks", "Destination resorts"], hasGuide: true },
+      { slug: "thorpe-park", name: "Thorpe Park", location: "Surrey, England", type: "Thrill park", summary: "A compact island park shaped around large-scale roller coasters and high-energy days out.", image: "/images/experiences/nemesis-reborn-generated.webp", categories: ["Thrill parks"], hasGuide: false },
+      { slug: "chessington-world-of-adventures", name: "Chessington World of Adventures", location: "Surrey, England", type: "Family resort", summary: "Family attractions, themed lands and animal encounters in one connected destination.", image: "/images/experiences/curse-at-alton-manor-generated.webp", categories: ["Family parks", "Destination resorts"], hasGuide: false },
+      { slug: "blackpool-pleasure-beach", name: "Blackpool Pleasure Beach", location: "Lancashire, England", type: "Seaside park", summary: "Classic amusement-park character and modern thrills beside the Lancashire coast.", image: "/images/experiences/united-kingdom-hero.webp", categories: ["Thrill parks", "Family parks", "Seaside parks"], hasGuide: false },
+      { slug: "legoland-windsor", name: "LEGOLAND Windsor", location: "Berkshire, England", type: "Family park", summary: "Colourful, imaginative rides and discovery experiences designed around younger families.", image: "/images/experiences/octonauts-generated.webp", categories: ["Family parks", "Destination resorts"], hasGuide: false },
+      { slug: "drayton-manor", name: "Drayton Manor Resort", location: "Staffordshire, England", type: "Family resort", summary: "A broad family day out combining thrill rides, younger attractions and resort stays.", image: "/images/parks/alton-towers/terrain-coaster-generated.webp", categories: ["Thrill parks", "Family parks", "Destination resorts"], hasGuide: false },
+    ],
   },
 ];
 

@@ -345,16 +345,16 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .attraction-score-card dt { color: var(--muted); font-size: .66rem; font-weight: 760; }
 .attraction-score-card dd { height: 5px; margin: 0; overflow: hidden; border-radius: 8px; background: var(--line); }
 .attraction-score-card dd span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand-coral), var(--brand-gold)); }
-.attraction-subnav, .park-subnav { position: sticky; top: 76px; z-index: 40; color: white; border-bottom: 1px solid rgb(255 255 255 / 9%); background: rgb(8 28 45 / 96%); box-shadow: 0 16px 40px rgb(5 20 31 / 18%); backdrop-filter: blur(18px) saturate(140%); }
-.attraction-subnav-inner, .park-subnav-inner { display: flex; min-height: 82px; align-items: center; gap: clamp(32px, 5vw, 70px); }
-.attraction-subnav-title, .park-subnav-title { display: flex; flex: 0 0 auto; align-items: center; gap: 11px; color: white; font-size: .8rem; font-weight: 850; }
-.attraction-subnav-title i, .park-subnav-title i { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-coral); box-shadow: 0 0 0 6px rgb(242 105 92 / 12%); }
-.attraction-subnav-links, .park-subnav-links { display: flex; min-width: 0; align-self: stretch; gap: clamp(24px, 3vw, 42px); overflow-x: auto; scrollbar-width: none; }
-.attraction-subnav-links::-webkit-scrollbar, .park-subnav-links::-webkit-scrollbar { display: none; }
-.attraction-subnav-links a, .park-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: rgb(255 255 255 / 60%); font-size: .95rem; font-weight: 760; text-decoration: none; transition: color 180ms var(--ease-out); }
-.attraction-subnav-links a::after, .park-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 4px; content: ""; background: var(--brand-gold); scale: 0 1; transition: scale 180ms var(--ease-out); }
-.attraction-subnav-links a:hover, .attraction-subnav-links a.is-active, .park-subnav-links a:hover, .park-subnav-links a.is-active { color: white; }
-.attraction-subnav-links a:hover::after, .attraction-subnav-links a.is-active::after, .park-subnav-links a:hover::after, .park-subnav-links a.is-active::after { scale: 1; }
+.attraction-subnav, .park-subnav, .country-subnav { position: sticky; top: 76px; z-index: 40; color: white; border-bottom: 1px solid rgb(255 255 255 / 9%); background: rgb(8 28 45 / 96%); box-shadow: 0 16px 40px rgb(5 20 31 / 18%); backdrop-filter: blur(18px) saturate(140%); }
+.attraction-subnav-inner, .park-subnav-inner, .country-subnav-inner { display: flex; min-height: 82px; align-items: center; gap: clamp(32px, 5vw, 70px); }
+.attraction-subnav-title, .park-subnav-title, .country-subnav-title { display: flex; flex: 0 0 auto; align-items: center; gap: 11px; color: white; font-size: .8rem; font-weight: 850; }
+.attraction-subnav-title i, .park-subnav-title i, .country-subnav-title i { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-coral); box-shadow: 0 0 0 6px rgb(242 105 92 / 12%); }
+.attraction-subnav-links, .park-subnav-links, .country-subnav-links { display: flex; min-width: 0; align-self: stretch; gap: clamp(24px, 3vw, 42px); overflow-x: auto; scrollbar-width: none; }
+.attraction-subnav-links::-webkit-scrollbar, .park-subnav-links::-webkit-scrollbar, .country-subnav-links::-webkit-scrollbar { display: none; }
+.attraction-subnav-links a, .park-subnav-links a, .country-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: rgb(255 255 255 / 60%); font-size: .95rem; font-weight: 760; text-decoration: none; transition: color 180ms var(--ease-out); }
+.attraction-subnav-links a::after, .park-subnav-links a::after, .country-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 4px; content: ""; background: var(--brand-gold); scale: 0 1; transition: scale 180ms var(--ease-out); }
+.attraction-subnav-links a:hover, .attraction-subnav-links a.is-active, .park-subnav-links a:hover, .park-subnav-links a.is-active, .country-subnav-links a:hover, .country-subnav-links a.is-active { color: white; }
+.attraction-subnav-links a:hover::after, .attraction-subnav-links a.is-active::after, .park-subnav-links a:hover::after, .park-subnav-links a.is-active::after, .country-subnav-links a:hover::after, .country-subnav-links a.is-active::after { scale: 1; }
 .attraction-overview-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(440px, 520px); align-items: center; gap: clamp(48px, 6vw, 88px); }
 .attraction-experience .experience-section { padding: 64px 0; }
 .attraction-overview-copy h2, .attraction-reviews-section h2, .attraction-next-card h2 { margin: 0; color: var(--text-strong); font-size: clamp(3rem, 5.2vw, 5.4rem); line-height: .91; letter-spacing: -.07em; }
@@ -519,6 +519,32 @@ a.park-action-button:hover .park-action-icon { scale: 1.05; background: rgb(255 
 .park-history-grid { display: grid; grid-template-columns: .75fr 1fr; gap: clamp(70px, 10vw, 150px); }
 .park-history-grid > div:first-child > p:last-child { max-width: 500px; color: var(--muted); line-height: 1.75; }
 
+/* Country discovery template — shares the park and attraction vertical rhythm. */
+.country-hero-v2 { padding-top: 88px; color: white; background-image: linear-gradient(90deg, rgb(5 18 31 / 97%) 0%, rgb(5 20 34 / 79%) 43%, rgb(5 20 34 / 8%) 73%), linear-gradient(to top, rgb(4 16 25 / 76%), transparent 48%), url("/images/countries/united-kingdom/hero-generated-v2.webp"); background-position: center; background-size: cover; }
+.country-hero-v2 .breadcrumbs { margin-bottom: 24px; }
+.country-hero-grid { grid-template-columns: minmax(0, 900px); min-height: 365px; padding-bottom: 24px; }
+.country-hero-grid > .country-hero-copy { max-width: 900px; }
+.country-hero-v2 h1 { max-width: 900px; font-size: clamp(3.8rem, 6.6vw, 6.8rem); white-space: nowrap; }
+.country-hero-v2 .experience-tagline { margin-top: 21px; font-size: clamp(1.15rem, 2vw, 1.65rem); }
+.country-hero-v2 .experience-summary { max-width: 680px; margin-top: 16px; font-size: clamp(.93rem, 1.25vw, 1.05rem); line-height: 1.6; }
+.country-experience-v2 .experience-section { padding: 64px 0; }
+.country-intro-grid { display: grid; grid-template-columns: 1.15fr .65fr; align-items: end; gap: clamp(48px, 7vw, 100px); }
+.country-intro-lede { max-width: 900px; margin: 18px 0 0; color: var(--text-strong); font-size: clamp(2rem, 3.6vw, 3.8rem); font-weight: 760; line-height: 1.05; letter-spacing: -.055em; }
+.country-intro-grid > p { max-width: 520px; margin: 0; color: var(--muted); line-height: 1.75; }
+.country-parks-section { color: white; background: #071b20; }
+.country-park-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.country-park-card { position: relative; display: grid; min-height: 420px; align-content: end; padding: 25px; overflow: hidden; color: white; border: 1px solid rgb(255 255 255 / 10%); border-radius: var(--radius-lg); background: #102433; box-shadow: var(--shadow-md); text-decoration: none; isolation: isolate; }
+.country-park-card::after { position: absolute; inset: 0; z-index: -1; content: ""; background: linear-gradient(to top, rgb(4 14 22 / 97%) 4%, rgb(4 14 22 / 30%) 75%); }
+.country-park-card img { z-index: -2; object-fit: cover; transition: scale 550ms var(--ease-out); }
+.country-park-card[href]:hover img { scale: 1.035; }
+.country-park-card-copy > span { color: var(--brand-gold); font-size: .62rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+.country-park-card-copy h3 { margin: 9px 0 0; color: white; font-size: clamp(2rem, 3vw, 3rem); line-height: .92; letter-spacing: -.06em; }
+.country-park-card-copy p { margin: 12px 0 18px; color: rgb(255 255 255 / 66%); font-size: .78rem; line-height: 1.55; }
+.country-park-card-copy b { display: block; padding-top: 15px; color: rgb(255 255 255 / 48%); border-top: 1px solid rgb(255 255 255 / 12%); font-size: .65rem; }
+.country-park-card[href] .country-park-card-copy b { color: var(--brand-gold); }
+.country-regions-section { background: var(--page-soft); }
+.country-regions-section .region-panel > div > p:last-child { max-width: 520px; margin: 24px 0 0; color: var(--muted); line-height: 1.7; }
+
 @media (max-width: 1020px) {
   .hero { min-height: auto; }
   .hero-grid { grid-template-columns: 1fr; }
@@ -543,7 +569,11 @@ a.park-action-button:hover .park-action-icon { scale: 1.05; background: rgb(255 
   .park-section-intro { grid-template-columns: 1fr; gap: 24px; }
   .park-directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .park-subnav-title { display: none; }
+  .country-subnav-title { display: none; }
   .park-hero-v2 h1 { white-space: normal; }
+  .country-hero-v2 h1 { white-space: normal; }
+  .country-intro-grid { grid-template-columns: 1fr; align-items: start; gap: 28px; }
+  .country-park-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
@@ -575,13 +605,20 @@ a.park-action-button:hover .park-action-icon { scale: 1.05; background: rgb(255 
   .country-hero { background-position: 68% center; }
   .park-hero { background-position: 67% center; }
   .park-hero-v2 { padding-top: 80px; background-position: 62% center; }
+  .country-hero-v2 { padding-top: 80px; background-position: 64% center; }
   .park-hero-v2 .breadcrumbs { margin-bottom: 22px; }
+  .country-hero-v2 .breadcrumbs { margin-bottom: 22px; }
   .park-hero-grid { min-height: 360px; padding-bottom: 28px; }
+  .country-hero-grid { min-height: 360px; padding-bottom: 28px; }
   .park-hero-v2 h1 { font-size: clamp(3.4rem, 15vw, 5rem); }
+  .country-hero-v2 h1 { font-size: clamp(3.4rem, 15vw, 5rem); }
   .park-action-button { flex-basis: 185px; min-height: 94px; grid-template-columns: 38px 1fr; gap: 10px; padding: 12px; }
   .park-action-icon { width: 38px; height: 38px; border-radius: 11px; }
   .park-action-icon svg { width: 20px; }
   .park-experience-v2 .experience-section { padding: 48px 0; }
+  .country-experience-v2 .experience-section { padding: 48px 0; }
+  .country-park-grid { grid-template-columns: 1fr; }
+  .country-park-card { min-height: 390px; }
   .park-overview-grid { gap: 38px; }
   .park-attraction-grid { grid-template-columns: 1fr; }
   .park-attraction-card { min-height: 330px; padding: 24px; }

@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumbs, ExperienceFooter, SectionHeading, StatGrid, ArrowIcon } from "../../components/experience";
+import { Breadcrumbs, ExperienceFooter, StatGrid } from "../../components/experience";
+import { CountryParkDirectory } from "../../components/country-park-directory";
+import { CountrySubnav } from "../../components/country-subnav";
 import { SiteHeader } from "../../components/site-header";
-import { countries, getCountry, getPark } from "../../data/catalogue";
+import { countries, getCountry } from "../../data/catalogue";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return countries.map(({ slug }) => ({ slug }));
-}
+export function generateStaticParams() { return countries.map(({ slug }) => ({ slug })); }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const country = getCountry((await params).slug);
@@ -19,55 +18,43 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function CountryPage({ params }: PageProps) {
   const country = getCountry((await params).slug);
   if (!country) notFound();
-  const featuredParks = country.parkSlugs.map(getPark).filter((park) => park !== undefined);
 
-  return (
-    <>
-      <a className="skip-link" href="#main-content">Skip to content</a>
-      <SiteHeader />
-      <main id="main-content" className="experience-page country-experience">
-        <section className="experience-hero country-hero">
-          <div className="shell">
-            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: country.name }]} />
-            <div className="experience-hero-grid">
-              <div>
-                <p className="eyebrow"><span />Explore by country</p>
-                <h1>{country.name}</h1>
-                <p className="experience-tagline">{country.eyebrow}</p>
-                <p className="experience-summary">{country.introduction}</p>
-              </div>
-            </div>
-            <StatGrid stats={country.stats} />
-          </div>
-        </section>
+  return <>
+    <a className="skip-link" href="#main-content">Skip to content</a>
+    <SiteHeader />
+    <main id="main-content" className="experience-page country-experience-v2">
+      <section className="experience-hero country-hero-v2">
+        <div className="shell">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: country.name }]} />
+          <div className="experience-hero-grid country-hero-grid"><div className="country-hero-copy">
+            <p className="eyebrow"><span />Explore by country</p>
+            <h1>{country.name}</h1>
+            <p className="experience-tagline">{country.eyebrow}</p>
+            <p className="experience-summary">{country.introduction}</p>
+          </div></div>
+          <span className="generated-image-label">Generated concept image</span>
+          <StatGrid stats={country.stats} />
+        </div>
+      </section>
 
-        <section className="experience-section">
-          <div className="shell">
-            <SectionHeading eyebrow="Featured destination" title="Begin with a landmark.">
-              <p>This first connected preview establishes the pattern that every future park page will follow.</p>
-            </SectionHeading>
-            <div className="feature-link-grid">
-              {featuredParks.map((park) => (
-                <Link className="destination-card destination-card-large" href={`/parks/${park.slug}`} key={park.slug}>
-                  <div className="destination-art park-art" aria-hidden="true"><i /><i /><i /></div>
-                  <div className="destination-copy">
-                    <span>{park.location}</span><h2>{park.name}</h2><p>{park.tagline}</p>
-                  </div>
-                  <ArrowIcon />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+      <CountrySubnav countryName={country.name} />
 
-        <section className="experience-section region-section">
-          <div className="shell region-panel">
-            <div><p className="eyebrow">Browse the nations</p><h2>Four distinct park landscapes.</h2></div>
-            <ul>{country.regions.map((region, index) => <li key={region}><span>0{index + 1}</span>{region}</li>)}</ul>
-          </div>
-        </section>
-      </main>
-      <ExperienceFooter />
-    </>
-  );
+      <section className="experience-section country-overview-section" id="overview">
+        <div className="shell country-intro-grid">
+          <div><p className="eyebrow">Country overview</p><p className="country-intro-lede">Coastal amusement parks, woodland resorts and story-led family destinations make the United Kingdom one of Europe’s most varied park landscapes.</p></div>
+          <p>Start with a curated preview of recognisable destinations. As TPbuzz grows, every park card will connect to ride guides, planning information, history, news and community reviews.</p>
+        </div>
+      </section>
+
+      <section className="experience-section country-parks-section" id="parks">
+        <div className="shell">
+          <div className="park-section-intro park-section-intro-light"><div><p className="eyebrow">Parks to discover</p><h2>Choose your next adventure.</h2></div><p>Search the first country collection by park, location or the kind of day out you want. Alton Towers already opens into a complete guide; the remaining destinations show how the national directory will grow.</p></div>
+          <CountryParkDirectory parks={country.parkDirectory} />
+        </div>
+      </section>
+
+      <section className="experience-section country-regions-section" id="regions"><div className="shell region-panel"><div><p className="eyebrow">Browse the nations</p><h2>Four distinct park landscapes.</h2><p>Regional discovery will eventually connect parks with nearby attractions, transport, accommodation and trip ideas.</p></div><ul>{country.regions.map((region, index) => <li key={region}><span>0{index + 1}</span>{region}</li>)}</ul></div></section>
+    </main>
+    <ExperienceFooter />
+  </>;
 }
