@@ -61,14 +61,13 @@ export default async function ParkPage({ params }: PageProps) {
           <div className="shell park-overview-grid">
             <div className="park-overview-copy">
               <p className="eyebrow">Park overview</p>
-              <h2>Adventure, shaped by the landscape.</h2>
               <p>Alton Towers is not a park laid out on a blank canvas. Historic gardens, woodland paths and dramatic changes in terrain shape how every part of the resort is discovered.</p>
               <p>Its biggest attractions sit alongside quiet corners and traces of the estate that came before them, creating a day that can feel both intensely energetic and unexpectedly restorative.</p>
               <ul className="park-tags" aria-label="Park highlights">
                 <li>Destination resort</li><li>Major thrill rides</li><li>Historic gardens</li>
               </ul>
             </div>
-            <aside className="park-score-card" id="reviews" aria-label="TPbuzz park preview rating">
+            <aside className="park-score-card" aria-label="TPbuzz park preview rating">
               <p className="park-score-label">TPbuzz preview</p>
               <div className="park-score-layout">
                 <div className="park-score-number"><strong>9.1</strong><span>/ 10</span><div aria-label="Four and a half stars">★★★★<i>★</i></div></div>
@@ -136,6 +135,22 @@ export default async function ParkPage({ params }: PageProps) {
           <div className="shell park-history-grid">
             <div><p className="eyebrow">Living history</p><h2>The story keeps moving.</h2><p>From celebrated gardens to landmark attractions, each era has added another layer to the estate.</p></div>
             <Timeline entries={park.timeline} />
+          </div>
+        </section>
+
+        <section className="experience-section attraction-reviews-section park-reviews-section" id="reviews">
+          <div className="shell review-preview-grid">
+            <div>
+              <p className="eyebrow eyebrow-warm">Community reviews</p>
+              <h2>Your visits will shape this guide.</h2>
+              <p>Park ratings, written reviews and audience-specific scores will appear here when TPbuzz accounts and moderation tools are ready.</p>
+            </div>
+            <div className="review-coming-card">
+              <span className="review-coming-label">Coming in the community phase</span>
+              <div className="review-score-preview"><strong>—</strong><span>/ 10</span></div>
+              <p>No fabricated reviews. This space will only show ratings submitted by real TPbuzz members.</p>
+              <div className="review-audiences"><span>Thrill seekers</span><span>Families</span><span>Accessibility</span></div>
+            </div>
           </div>
         </section>
       </main>
