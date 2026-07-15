@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumbs, ExperienceFooter, SectionHeading, StatGrid, Timeline } from "../../components/experience";
+import { AttractionSubnav } from "../../components/attraction-subnav";
+import { AttractionStatGrid, Breadcrumbs, ExperienceFooter, SectionHeading, Timeline } from "../../components/experience";
 import { SiteHeader } from "../../components/site-header";
 import { attractions, getAttraction, getCountry, getPark } from "../../data/catalogue";
 
@@ -39,35 +40,12 @@ export default async function AttractionPage({ params }: PageProps) {
                 <p className="experience-summary">{attraction.summary}</p>
                 <div className="status-row"><span className="status-pill"><i />{attraction.status}</span><span>At {park.name}</span></div>
               </div>
-              <aside className="attraction-score-card" aria-label="TPbuzz attraction preview">
-                <div className="score-card-topline"><span>TPbuzz preview</span><i aria-hidden="true" /></div>
-                <div className="score-card-value"><strong>8.8</strong><span>/ 10</span></div>
-                <div className="score-card-stars" aria-hidden="true">★★★★<span>★</span></div>
-                <p>A design-preview score while community ratings are being built.</p>
-                <dl>
-                  <div><dt>Thrill</dt><dd><span style={{ width: "88%" }} /></dd></div>
-                  <div><dt>Theming</dt><dd><span style={{ width: "94%" }} /></dd></div>
-                  <div><dt>Family</dt><dd><span style={{ width: "72%" }} /></dd></div>
-                </dl>
-              </aside>
             </div>
-            <StatGrid stats={attraction.stats} />
+            <AttractionStatGrid stats={attraction.stats} />
           </div>
         </section>
 
-        <nav className="attraction-subnav" aria-label={`${attraction.name} sections`}>
-          <div className="shell attraction-subnav-inner">
-            <span className="attraction-subnav-title">Explore {attraction.name}</span>
-            <div className="attraction-subnav-links">
-              <a href="#overview">Overview</a>
-              <a href="#experience">Experience</a>
-              <a href="#ride-stats">Ride stats</a>
-              <a href="#gallery">Gallery</a>
-              <a href="#history">History</a>
-              <a href="#reviews">Reviews</a>
-            </div>
-          </div>
-        </nav>
+        <AttractionSubnav attractionName={attraction.name} />
 
         <section className="experience-section attraction-overview" id="overview">
           <div className="shell attraction-overview-grid">
@@ -80,6 +58,19 @@ export default async function AttractionPage({ params }: PageProps) {
                 <li>Best after dark</li><li>High thrill</li><li>Indoor preshow</li>
               </ul>
             </div>
+            <aside className="attraction-score-card" aria-label="TPbuzz attraction preview">
+              <div className="score-card-topline"><span>TPbuzz preview</span><i aria-hidden="true" /></div>
+              <div className="score-card-value"><strong>8.8</strong><span>/ 10</span></div>
+              <div className="score-card-stars" aria-hidden="true">★★★★<span>★</span></div>
+              <p>A design-preview score while community ratings are being built.</p>
+              <dl>
+                <div><dt>Thrill</dt><dd><span style={{ width: "88%" }} /></dd></div>
+                <div><dt>Theming</dt><dd><span style={{ width: "94%" }} /></dd></div>
+                <div><dt>Family</dt><dd><span style={{ width: "72%" }} /></dd></div>
+              </dl>
+            </aside>
+          </div>
+          <div className="shell">
             <div className="overview-image-card" role="img" aria-label="Wicker Man wooden coaster and burning effigy">
               <span>Signature moment</span>
               <div><strong>Through the flames</strong><p>The central structure is both icon and finale.</p></div>
