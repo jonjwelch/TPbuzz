@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { CSSProperties } from "react";
 import { AttractionSubnav } from "../../components/attraction-subnav";
 import { AttractionStatGrid, Breadcrumbs, ExperienceFooter, SectionHeading, Timeline } from "../../components/experience";
 import { SiteHeader } from "../../components/site-header";
@@ -23,12 +24,13 @@ export default async function AttractionPage({ params }: PageProps) {
   const park = getPark(attraction.parkSlug);
   const country = park ? getCountry(park.countrySlug) : undefined;
   if (!park || !country) notFound();
+  const attractionStyle = { "--attraction-image": `url("${attraction.heroImage}")` } as CSSProperties;
 
   return (
     <>
       <a className="skip-link" href="#main-content">Skip to content</a>
       <SiteHeader />
-      <main id="main-content" className="experience-page attraction-experience">
+      <main id="main-content" className="experience-page attraction-experience" style={attractionStyle}>
         <section className="experience-hero attraction-hero">
           <div className="shell">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: country.name, href: `/countries/${country.slug}` }, { label: park.name, href: `/parks/${park.slug}` }, { label: attraction.name }]} />
@@ -43,6 +45,7 @@ export default async function AttractionPage({ params }: PageProps) {
             </div>
             <AttractionStatGrid stats={attraction.stats} />
           </div>
+          <span className="generated-image-label">{attraction.imageLabel}</span>
         </section>
 
         <AttractionSubnav attractionName={attraction.name} />
@@ -51,40 +54,37 @@ export default async function AttractionPage({ params }: PageProps) {
           <div className="shell attraction-overview-grid">
             <div className="attraction-overview-copy">
               <p className="eyebrow">Ride overview</p>
-              <p>Wicker Man is built around more than track and timber. Its queue, preshow, soundtrack and central effigy turn a compact wooden coaster into one connected piece of theatre.</p>
-              <p>Riders move from warnings carved into the landscape to the ceremony inside the preshow, before the train races repeatedly through the six-storey structure at the heart of the story.</p>
+              {attraction.overview.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               <ul className="attraction-tags" aria-label="Attraction highlights">
-                <li>Best after dark</li><li>High thrill</li><li>Indoor preshow</li>
+                {attraction.overview.tags.map((tag) => <li key={tag}>{tag}</li>)}
               </ul>
             </div>
             <aside className="attraction-score-card" aria-label="TPbuzz attraction preview">
               <div className="score-card-topline"><span>TPbuzz preview</span><i aria-hidden="true" /></div>
               <div className="score-card-layout">
                 <div className="score-card-summary">
-                  <div className="score-card-value"><strong>8.8</strong><span>/ 10</span></div>
+                  <div className="score-card-value"><strong>{attraction.overview.score}</strong><span>/ 10</span></div>
                   <div className="score-card-stars" aria-hidden="true">★★★★<span>★</span></div>
                 </div>
                 <dl>
-                  <div><dt>Thrill</dt><dd><span style={{ width: "88%" }} /></dd></div>
-                  <div><dt>Theming</dt><dd><span style={{ width: "94%" }} /></dd></div>
-                  <div><dt>Family</dt><dd><span style={{ width: "72%" }} /></dd></div>
+                  {attraction.overview.ratingSignals.map((signal) => <div key={signal.label}><dt>{signal.label}</dt><dd><span style={{ width: `${signal.value}%` }} /></dd></div>)}
                 </dl>
               </div>
               <p>A design-preview score while community ratings are being built.</p>
             </aside>
           </div>
           <div className="shell">
-            <div className="overview-image-card" role="img" aria-label="Wicker Man wooden coaster and burning effigy">
+            <div className="overview-image-card" role="img" aria-label={`${attraction.name} generated concept view`}>
               <span>Signature moment</span>
-              <div><strong>Through the flames</strong><p>The central structure is both icon and finale.</p></div>
+              <div><strong>{attraction.overview.signatureTitle}</strong><p>{attraction.overview.signatureDescription}</p></div>
             </div>
           </div>
         </section>
 
         <section className="experience-section experience-story-section" id="experience">
           <div className="shell">
-            <SectionHeading eyebrow="The experience" title="A story in three acts.">
-              <p>From the first symbol in the queue to the final turn, every stage supports the same ritualistic world.</p>
+            <SectionHeading eyebrow="The experience" title={attraction.experienceHeading}>
+              <p>{attraction.experienceSummary}</p>
             </SectionHeading>
             <div className="experience-act-grid">
               {attraction.experience.map((act, index) => <article className="experience-act" key={act.title}><span>Act 0{index + 1}</span><h3>{act.title}</h3><p>{act.description}</p></article>)}
@@ -108,13 +108,11 @@ export default async function AttractionPage({ params }: PageProps) {
 
         <section className="experience-section attraction-gallery-section" id="gallery">
           <div className="shell">
-            <SectionHeading eyebrow="Visual story" title="Inside the ritual.">
-              <p>A temporary image study showing how galleries will feel once licensed and community photography is available.</p>
+            <SectionHeading eyebrow="Visual story" title={attraction.galleryHeading}>
+              <p>{attraction.gallerySummary}</p>
             </SectionHeading>
             <div className="attraction-gallery">
-              <figure className="gallery-frame gallery-frame-wide"><figcaption><span>01</span><strong>The effigy</strong></figcaption></figure>
-              <figure className="gallery-frame gallery-frame-high"><figcaption><span>02</span><strong>Into the structure</strong></figcaption></figure>
-              <figure className="gallery-frame gallery-frame-low"><figcaption><span>03</span><strong>After dark</strong></figcaption></figure>
+              {attraction.galleryCaptions.map((caption, index) => <figure className={`gallery-frame ${index === 0 ? "gallery-frame-wide" : index === 1 ? "gallery-frame-high" : "gallery-frame-low"}`} key={caption}><figcaption><span>0{index + 1}</span><strong>{caption}</strong></figcaption></figure>)}
             </div>
           </div>
         </section>

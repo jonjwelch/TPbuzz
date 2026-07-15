@@ -22,43 +22,21 @@ function ExternalArrow() {
   return <span className="visit-card-arrow" aria-hidden="true">↗</span>;
 }
 
-export function ParkVisitDashboard({ park }: { park: Park }) {
+export function ParkQuickActions({ park }: { park: Park }) {
   const cards = [
     { label: "Tickets", icon: "ticket" as const, ...park.visit.tickets },
     { label: "Opening times", icon: "clock" as const, ...park.visit.openingTimes },
     { label: "Weather", icon: "weather" as const, ...park.visit.weather },
     { label: "Queue times", icon: "queue" as const, ...park.visit.queues },
+    { label: "Park map", icon: "map" as const, value: "Explore map", ...park.visit.map },
   ];
 
   return (
-    <div className="park-visit-dashboard" aria-label={`Visit information for ${park.name}`}>
-      <div className="park-visit-heading">
-        <div>
-          <p className="eyebrow">Plan today</p>
-          <h2>The essentials, at a glance.</h2>
-        </div>
-        <span><i aria-hidden="true" />Preview information</span>
-      </div>
-
-      <div className="park-visit-grid">
+    <nav className="park-quick-actions" aria-label={`Plan a visit to ${park.name}`}>
         {cards.map((card) => {
-          const content = <><span className="visit-card-icon"><VisitIcon type={card.icon} /></span><span className="visit-card-label">{card.label}</span><strong>{card.value}</strong><small>{card.note}</small>{"href" in card ? <ExternalArrow /> : null}</>;
-          return "href" in card ? <a className="park-visit-card" href={card.href} target="_blank" rel="noreferrer" key={card.label}>{content}</a> : <article className="park-visit-card" key={card.label}>{content}</article>;
+          const content = <><span className="park-action-icon"><VisitIcon type={card.icon} /></span><span className="park-action-copy"><span>{card.label}</span><strong>{card.value}</strong><small>{card.note}</small></span>{"href" in card ? <ExternalArrow /> : null}</>;
+          return "href" in card ? <a className="park-action-button" href={card.href} target="_blank" rel="noreferrer" key={card.label}>{content}</a> : <span className="park-action-button park-action-preview" key={card.label}>{content}</span>;
         })}
-
-        <a className="park-map-card" href={park.visit.map.href} target="_blank" rel="noreferrer">
-          <div className="park-map-graphic" aria-hidden="true">
-            <i className="map-path map-path-one" /><i className="map-path map-path-two" />
-            <span className="map-water" /><span className="map-wood map-wood-one" /><span className="map-wood map-wood-two" />
-            <span className="map-marker map-marker-main"><b>TP</b></span><span className="map-marker map-marker-ride" />
-          </div>
-          <div className="park-map-copy">
-            <span className="visit-card-icon"><VisitIcon type="map" /></span>
-            <span><span className="visit-card-label">Park map</span><strong>Find your way around</strong><small>{park.visit.map.note}</small></span>
-            <ExternalArrow />
-          </div>
-        </a>
-      </div>
-    </div>
+    </nav>
   );
 }

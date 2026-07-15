@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowIcon, Breadcrumbs, ExperienceFooter, ParkStatGrid, Timeline } from "../../components/experience";
+import { ArrowIcon, Breadcrumbs, ExperienceFooter, Timeline } from "../../components/experience";
 import { ParkSubnav } from "../../components/park-subnav";
-import { ParkVisitDashboard } from "../../components/park-visit-dashboard";
+import { ParkQuickActions } from "../../components/park-visit-dashboard";
 import { SiteHeader } from "../../components/site-header";
 import { getAttraction, getCountry, getPark, parks } from "../../data/catalogue";
 
@@ -46,7 +46,7 @@ export default async function ParkPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
-            <ParkStatGrid stats={park.stats} />
+            <ParkQuickActions park={park} />
           </div>
         </section>
 
@@ -73,7 +73,6 @@ export default async function ParkPage({ params }: PageProps) {
                 <p className="park-score-note">An editorial preview while community ratings and verified visit data are being built.</p>
               </aside>
             </div>
-            <ParkVisitDashboard park={park} />
           </div>
         </section>
 
@@ -86,7 +85,8 @@ export default async function ParkPage({ params }: PageProps) {
             <div className="park-attraction-grid">
               {featuredAttractions.map((attraction) => (
                 <Link className="park-attraction-card" href={`/attractions/${attraction.slug}`} key={attraction.slug}>
-                  <Image src={`/images/experiences/${attraction.slug}-hero.webp`} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" />
+                  <Image src={attraction.heroImage} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" />
+                  <span className="park-card-image-label">{attraction.imageLabel}</span>
                   <div className="park-attraction-card-copy"><span>{attraction.type}</span><h3>{attraction.name}</h3><p>{attraction.tagline}</p></div>
                   <ArrowIcon />
                 </Link>
