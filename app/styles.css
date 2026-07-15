@@ -409,7 +409,7 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .park-stat-icon { display: grid; width: 43px; height: 43px; place-items: center; color: var(--brand-gold); border: 1px solid rgb(255 255 255 / 15%); border-radius: 13px; background: rgb(255 255 255 / 6%); }
 .park-stat-icon svg { width: 23px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.55; }
 .park-stats dd { font-size: clamp(.85rem, 1.4vw, 1.08rem); }
-.park-experience-v2 .experience-section { padding: 64px 0; scroll-margin-top: 158px; }
+.park-experience-v2 .experience-section { padding: 64px 0; }
 .park-overview-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(440px, 520px); align-items: start; gap: clamp(48px, 6vw, 88px); }
 .park-section-intro h2, .park-history-grid h2 { max-width: 850px; margin: 0; color: var(--text-strong); font-size: clamp(3rem, 5.4vw, 5.4rem); line-height: .92; letter-spacing: -.07em; }
 .park-overview-copy > p:not(.eyebrow) { max-width: 790px; margin: 22px 0 0; color: var(--muted); font-size: 1.04rem; line-height: 1.75; }
@@ -542,7 +542,7 @@ a.park-action-button:hover .park-action-icon { scale: 1.05; background: rgb(255 
   .park-action-button { flex-basis: 185px; min-height: 94px; grid-template-columns: 38px 1fr; gap: 10px; padding: 12px; }
   .park-action-icon { width: 38px; height: 38px; border-radius: 11px; }
   .park-action-icon svg { width: 20px; }
-  .park-experience-v2 .experience-section { padding: 48px 0; scroll-margin-top: 136px; }
+  .park-experience-v2 .experience-section { padding: 48px 0; }
   .park-overview-grid { gap: 38px; }
   .park-attraction-grid { grid-template-columns: 1fr; }
   .park-attraction-card { min-height: 330px; padding: 24px; }

@@ -19,7 +19,8 @@ export function AttractionSubnav({ attractionName }: { attractionName: string })
 
     const updateActiveSection = () => {
       frame = 0;
-      const activationLine = 190;
+      const subnav = document.querySelector<HTMLElement>(".attraction-subnav");
+      const activationLine = Math.min(190, (subnav?.getBoundingClientRect().bottom ?? 158) + 12);
       let currentSection: (typeof sections)[number][0] = sections[0][0];
 
       sections.forEach(([id]) => {
@@ -53,7 +54,7 @@ export function AttractionSubnav({ attractionName }: { attractionName: string })
         <span className="attraction-subnav-title"><i aria-hidden="true" />Explore {attractionName}</span>
         <div className="attraction-subnav-links">
           {sections.map(([id, label]) => (
-            <a href={`#${id}`} className={activeSection === id ? "is-active" : undefined} aria-current={activeSection === id ? "location" : undefined} key={id}>{label}</a>
+            <a href={`#${id}`} className={activeSection === id ? "is-active" : undefined} onClick={() => setActiveSection(id)} aria-current={activeSection === id ? "location" : undefined} key={id}>{label}</a>
           ))}
         </div>
       </div>

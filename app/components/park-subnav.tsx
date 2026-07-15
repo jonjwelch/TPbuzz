@@ -13,30 +13,42 @@ export function ParkSubnav({ parkName }: { parkName: string }) {
   const [activeSection, setActiveSection] = useState("overview");
 
   useEffect(() => {
+    let frame = 0;
+
     const syncHash = () => {
       const hash = window.location.hash.slice(1);
       if (sections.some(({ id }) => id === hash)) setActiveSection(hash);
     };
 
+    const updateActiveSection = () => {
+      frame = 0;
+      const subnav = document.querySelector<HTMLElement>(".park-subnav");
+      const activationLine = Math.min(190, (subnav?.getBoundingClientRect().bottom ?? 158) + 12);
+      let currentSection = sections[0].id;
+
+      sections.forEach(({ id }) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= activationLine) currentSection = id;
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateActiveSection);
+    };
+
     syncHash();
+    updateActiveSection();
     window.addEventListener("hashchange", syncHash);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting);
-        if (visible?.target.id) setActiveSection(visible.target.id);
-      },
-      { rootMargin: "-30% 0px -58%", threshold: 0 },
-    );
-
-    sections.forEach(({ id }) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
 
     return () => {
       window.removeEventListener("hashchange", syncHash);
-      observer.disconnect();
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
 
@@ -46,7 +58,7 @@ export function ParkSubnav({ parkName }: { parkName: string }) {
         <span className="park-subnav-title"><i aria-hidden="true" />Explore {parkName.replace(" Resort", "")}</span>
         <div className="park-subnav-links">
           {sections.map(({ id, label }) => (
-            <a className={activeSection === id ? "is-active" : undefined} href={`#${id}`} key={id} aria-current={activeSection === id ? "location" : undefined}>{label}</a>
+            <a className={activeSection === id ? "is-active" : undefined} href={`#${id}`} key={id} onClick={() => setActiveSection(id)} aria-current={activeSection === id ? "location" : undefined}>{label}</a>
           ))}
         </div>
       </div>
