@@ -51,8 +51,7 @@ export default async function AttractionPage({ params }: PageProps) {
           <div className="shell attraction-overview-grid">
             <div className="attraction-overview-copy">
               <p className="eyebrow">Ride overview</p>
-              <h2>Wood. Fire. Folklore.</h2>
-              <p className="overview-lede">Wicker Man is built around more than track and timber. Its queue, preshow, soundtrack and central effigy turn a compact wooden coaster into one connected piece of theatre.</p>
+              <p>Wicker Man is built around more than track and timber. Its queue, preshow, soundtrack and central effigy turn a compact wooden coaster into one connected piece of theatre.</p>
               <p>Riders move from warnings carved into the landscape to the ceremony inside the preshow, before the train races repeatedly through the six-storey structure at the heart of the story.</p>
               <ul className="attraction-tags" aria-label="Attraction highlights">
                 <li>Best after dark</li><li>High thrill</li><li>Indoor preshow</li>
@@ -60,14 +59,18 @@ export default async function AttractionPage({ params }: PageProps) {
             </div>
             <aside className="attraction-score-card" aria-label="TPbuzz attraction preview">
               <div className="score-card-topline"><span>TPbuzz preview</span><i aria-hidden="true" /></div>
-              <div className="score-card-value"><strong>8.8</strong><span>/ 10</span></div>
-              <div className="score-card-stars" aria-hidden="true">★★★★<span>★</span></div>
+              <div className="score-card-layout">
+                <div className="score-card-summary">
+                  <div className="score-card-value"><strong>8.8</strong><span>/ 10</span></div>
+                  <div className="score-card-stars" aria-hidden="true">★★★★<span>★</span></div>
+                </div>
+                <dl>
+                  <div><dt>Thrill</dt><dd><span style={{ width: "88%" }} /></dd></div>
+                  <div><dt>Theming</dt><dd><span style={{ width: "94%" }} /></dd></div>
+                  <div><dt>Family</dt><dd><span style={{ width: "72%" }} /></dd></div>
+                </dl>
+              </div>
               <p>A design-preview score while community ratings are being built.</p>
-              <dl>
-                <div><dt>Thrill</dt><dd><span style={{ width: "88%" }} /></dd></div>
-                <div><dt>Theming</dt><dd><span style={{ width: "94%" }} /></dd></div>
-                <div><dt>Family</dt><dd><span style={{ width: "72%" }} /></dd></div>
-              </dl>
             </aside>
           </div>
           <div className="shell">
