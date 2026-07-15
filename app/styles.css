@@ -344,16 +344,16 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .attraction-score-card dt { color: var(--muted); font-size: .66rem; font-weight: 760; }
 .attraction-score-card dd { height: 5px; margin: 0; overflow: hidden; border-radius: 8px; background: var(--line); }
 .attraction-score-card dd span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand-coral), var(--brand-gold)); }
-.attraction-subnav { position: sticky; top: 76px; z-index: 40; color: white; border-bottom: 1px solid rgb(255 255 255 / 9%); background: rgb(8 28 45 / 96%); box-shadow: 0 16px 40px rgb(5 20 31 / 18%); backdrop-filter: blur(18px) saturate(140%); }
-.attraction-subnav-inner { display: flex; min-height: 82px; align-items: center; gap: clamp(32px, 5vw, 70px); }
-.attraction-subnav-title { display: flex; flex: 0 0 auto; align-items: center; gap: 11px; color: white; font-size: .8rem; font-weight: 850; }
-.attraction-subnav-title i { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-coral); box-shadow: 0 0 0 6px rgb(242 105 92 / 12%); }
-.attraction-subnav-links { display: flex; min-width: 0; align-self: stretch; gap: clamp(24px, 3vw, 42px); overflow-x: auto; scrollbar-width: none; }
-.attraction-subnav-links::-webkit-scrollbar { display: none; }
-.attraction-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: rgb(255 255 255 / 60%); font-size: .95rem; font-weight: 760; text-decoration: none; transition: color 180ms var(--ease-out); }
-.attraction-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 4px; content: ""; background: var(--brand-gold); scale: 0 1; transition: scale 180ms var(--ease-out); }
-.attraction-subnav-links a:hover, .attraction-subnav-links a.is-active { color: white; }
-.attraction-subnav-links a:hover::after, .attraction-subnav-links a.is-active::after { scale: 1; }
+.attraction-subnav, .park-subnav { position: sticky; top: 76px; z-index: 40; color: white; border-bottom: 1px solid rgb(255 255 255 / 9%); background: rgb(8 28 45 / 96%); box-shadow: 0 16px 40px rgb(5 20 31 / 18%); backdrop-filter: blur(18px) saturate(140%); }
+.attraction-subnav-inner, .park-subnav-inner { display: flex; min-height: 82px; align-items: center; gap: clamp(32px, 5vw, 70px); }
+.attraction-subnav-title, .park-subnav-title { display: flex; flex: 0 0 auto; align-items: center; gap: 11px; color: white; font-size: .8rem; font-weight: 850; }
+.attraction-subnav-title i, .park-subnav-title i { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-coral); box-shadow: 0 0 0 6px rgb(242 105 92 / 12%); }
+.attraction-subnav-links, .park-subnav-links { display: flex; min-width: 0; align-self: stretch; gap: clamp(24px, 3vw, 42px); overflow-x: auto; scrollbar-width: none; }
+.attraction-subnav-links::-webkit-scrollbar, .park-subnav-links::-webkit-scrollbar { display: none; }
+.attraction-subnav-links a, .park-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: rgb(255 255 255 / 60%); font-size: .95rem; font-weight: 760; text-decoration: none; transition: color 180ms var(--ease-out); }
+.attraction-subnav-links a::after, .park-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 4px; content: ""; background: var(--brand-gold); scale: 0 1; transition: scale 180ms var(--ease-out); }
+.attraction-subnav-links a:hover, .attraction-subnav-links a.is-active, .park-subnav-links a:hover, .park-subnav-links a.is-active { color: white; }
+.attraction-subnav-links a:hover::after, .attraction-subnav-links a.is-active::after, .park-subnav-links a:hover::after, .park-subnav-links a.is-active::after { scale: 1; }
 .attraction-overview-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(440px, 520px); align-items: center; gap: clamp(48px, 6vw, 88px); }
 .attraction-experience .experience-section { padding: 64px 0; }
 .attraction-overview-copy h2, .attraction-reviews-section h2, .attraction-next-card h2 { margin: 0; color: var(--text-strong); font-size: clamp(3rem, 5.2vw, 5.4rem); line-height: .91; letter-spacing: -.07em; }
@@ -407,17 +407,7 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .park-stat-icon { display: grid; width: 43px; height: 43px; place-items: center; color: var(--brand-gold); border: 1px solid rgb(255 255 255 / 15%); border-radius: 13px; background: rgb(255 255 255 / 6%); }
 .park-stat-icon svg { width: 23px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.55; }
 .park-stats dd { font-size: clamp(.85rem, 1.4vw, 1.08rem); }
-.park-subnav { position: sticky; top: 76px; z-index: 12; color: #dce7ed; border-bottom: 1px solid rgb(255 255 255 / 7%); background: rgb(10 29 45 / 96%); box-shadow: 0 12px 35px rgb(3 12 20 / 14%); backdrop-filter: blur(18px); }
-.park-subnav-inner { display: flex; min-height: 74px; align-items: stretch; gap: clamp(34px, 5vw, 78px); }
-.park-subnav-title { display: flex; flex: 0 0 auto; align-items: center; gap: 10px; color: white; font-size: .77rem; font-weight: 850; }
-.park-subnav-title i { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-coral); box-shadow: 0 0 0 6px rgb(242 105 92 / 12%); }
-.park-subnav-links { display: flex; min-width: 0; align-items: stretch; gap: clamp(24px, 3vw, 46px); overflow-x: auto; scrollbar-width: none; }
-.park-subnav-links::-webkit-scrollbar { display: none; }
-.park-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: rgb(220 231 237 / 62%); font-size: .83rem; font-weight: 780; text-decoration: none; }
-.park-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 4px; content: ""; background: var(--brand-gold); scale: 0 1; transition: scale 180ms var(--ease-out); }
-.park-subnav-links a:hover, .park-subnav-links a.is-active { color: white; }
-.park-subnav-links a:hover::after, .park-subnav-links a.is-active::after { scale: 1; }
-.park-experience-v2 .experience-section { padding: 72px 0; scroll-margin-top: 150px; }
+.park-experience-v2 .experience-section { padding: 64px 0; scroll-margin-top: 158px; }
 .park-overview-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(380px, .65fr); align-items: center; gap: clamp(60px, 8vw, 120px); }
 .park-overview-copy h2, .park-section-intro h2, .park-history-grid h2 { max-width: 850px; margin: 0; color: var(--text-strong); font-size: clamp(3rem, 5.4vw, 5.4rem); line-height: .92; letter-spacing: -.07em; }
 .park-overview-copy > p:not(.eyebrow) { max-width: 790px; margin: 22px 0 0; color: var(--muted); font-size: 1.04rem; line-height: 1.75; }
@@ -524,11 +514,7 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .park-stats > div { flex: 0 0 168px; min-height: 82px; grid-template-columns: 38px 1fr; gap: 10px; padding: 12px; border-bottom: 0; scroll-snap-align: start; }
   .park-stat-icon { width: 38px; height: 38px; border-radius: 11px; }
   .park-stat-icon svg { width: 20px; }
-  .park-subnav { top: 68px; }
-  .park-subnav-inner { min-height: 66px; }
-  .park-subnav-links { gap: 26px; }
-  .park-subnav-links a { font-size: .8rem; }
-  .park-experience-v2 .experience-section { padding: 54px 0; scroll-margin-top: 134px; }
+  .park-experience-v2 .experience-section { padding: 48px 0; scroll-margin-top: 136px; }
   .park-overview-grid { gap: 38px; }
   .park-score-layout { grid-template-columns: 1fr 1.15fr; }
   .park-story-grid { grid-template-columns: 1fr; grid-template-rows: 390px 260px 240px; }
@@ -557,10 +543,10 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .experience-section { padding: 80px 0; }
   .attraction-experience .experience-section { padding: 48px 0; }
   .score-card-layout { grid-template-columns: 1fr; gap: 22px; }
-  .attraction-subnav { top: 68px; }
-  .attraction-subnav-inner { min-height: 68px; }
-  .attraction-subnav-title { display: none; }
-  .attraction-subnav-links { gap: 22px; }
+  .attraction-subnav, .park-subnav { top: 68px; }
+  .attraction-subnav-inner, .park-subnav-inner { min-height: 68px; }
+  .attraction-subnav-title, .park-subnav-title { display: none; }
+  .attraction-subnav-links, .park-subnav-links { gap: 22px; }
   .overview-image-card { min-height: 430px; border-radius: 28px; }
   .experience-section-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 38px; }
   .destination-card { min-height: 500px; }

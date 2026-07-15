@@ -44,7 +44,7 @@ export function ParkSubnav({ parkName }: { parkName: string }) {
   return (
     <nav className="park-subnav" aria-label={`${parkName} sections`}>
       <div className="shell park-subnav-inner">
-        <span className="park-subnav-title"><i />Explore {parkName.replace(" Resort", "")}</span>
+        <span className="park-subnav-title"><i aria-hidden="true" />Explore {parkName.replace(" Resort", "")}</span>
         <div className="park-subnav-links">
           {sections.map(({ id, label }) => (
             <a className={activeSection === id ? "is-active" : undefined} href={`#${id}`} key={id} aria-current={activeSection === id ? "location" : undefined}>{label}</a>
