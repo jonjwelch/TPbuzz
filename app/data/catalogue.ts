@@ -81,10 +81,11 @@ export const parks: Park[] = [
     operator: "Merlin Entertainments",
     attractionSlugs: ["wicker-man"],
     stats: [
-      { label: "Grounds first opened", value: "1860" },
+      { label: "Theme park era", value: "Since 1980" },
       { label: "Location", value: "Staffordshire" },
       { label: "Setting", value: "Historic estate" },
-      { label: "TPbuzz coverage", value: "Preview" },
+      { label: "Resort stays", value: "Available" },
+      { label: "TPbuzz guide", value: "Preview" },
     ],
     highlights: [
       {
