@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 210" role="img" aria-labelledby="title desc">
+  <title id="title">TPbuzz</title>
+  <desc id="desc">TP monogram in a blue rounded square followed by the word buzz.</desc>
+  <defs>
+    <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1930"/>
+      <stop offset=".56" stop-color="#123a5a"/>
+      <stop offset="1" stop-color="#25759a"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="190" height="190" rx="44" fill="url(#badge)"/>
+  <rect x="43" y="48" width="78" height="25" rx="12.5" fill="#fff"/>
+  <rect x="70" y="48" width="26" height="116" rx="13" fill="#fff"/>
+  <path fill="#fff" d="M112 48h47c24 0 39 15 39 39s-16 40-40 40h-21v37c0 7-6 13-13 13s-13-6-13-13V48Zm25 24v31h20c10 0 16-6 16-16 0-9-6-15-16-15h-20Z"/>
+  <path fill="#101827" d="M260 40c9 0 16 7 16 16v28c10-9 23-14 39-14 32 0 57 24 57 51s-25 51-57 51c-16 0-29-5-39-14 0 9-7 16-16 16s-16-7-16-16V56c0-9 7-16 16-16Zm54 60c-15 0-27 9-27 21s12 21 27 21 27-9 27-21-12-21-27-21Z"/>
+  <path d="M404 84v42c0 21 14 34 35 34s35-13 35-34V84" fill="none" stroke="#101827" stroke-width="31" stroke-linecap="round"/>
+  <path d="M524 86h82l-82 73h82M653 86h82l-82 73h82" fill="none" stroke="#101827" stroke-width="31" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
