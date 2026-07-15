@@ -224,7 +224,7 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .experience-stats dd { margin: 9px 0 0; color: white; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 820; letter-spacing: -.035em; }
 .country-hero { color: white; background-image: linear-gradient(90deg, rgb(5 20 33 / 97%) 0%, rgb(7 28 45 / 86%) 45%, rgb(7 28 45 / 25%) 82%), linear-gradient(to top, rgb(5 20 33 / 72%), transparent 45%), url("/images/experiences/united-kingdom-hero.webp"); background-position: center; background-size: cover; }
 .park-hero { color: white; background-image: linear-gradient(90deg, rgb(5 24 24 / 98%) 0%, rgb(7 30 29 / 88%) 48%, rgb(7 30 29 / 24%) 84%), linear-gradient(to top, rgb(5 22 21 / 76%), transparent 48%), url("/images/experiences/alton-towers-hero.webp"); background-position: center; background-size: cover; }
-.attraction-hero { padding-top: 96px; color: white; background-image: linear-gradient(90deg, rgb(18 10 7 / 96%) 0%, rgb(29 13 8 / 72%) 42%, rgb(29 13 8 / 8%) 72%), linear-gradient(to top, rgb(20 10 7 / 72%), transparent 48%), url("/images/experiences/wicker-man-hero.webp"); background-position: 60% center; background-size: cover; }
+.attraction-hero { padding-top: 88px; color: white; background-image: linear-gradient(90deg, rgb(18 10 7 / 96%) 0%, rgb(29 13 8 / 72%) 42%, rgb(29 13 8 / 8%) 72%), linear-gradient(to top, rgb(20 10 7 / 72%), transparent 48%), url("/images/experiences/wicker-man-hero.webp"); background-position: 60% center; background-size: cover; }
 .experience-art { position: absolute; inset: 0; z-index: -2; }
 .experience-art i { position: absolute; display: block; border: 1px solid rgb(255 255 255 / 12%); border-radius: 50%; }
 .experience-art i:nth-child(1) { top: 14%; right: -8%; width: 680px; height: 680px; }
@@ -315,13 +315,14 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .experience-footer { padding-top: 20px; }
 
 /* Attraction experience template. */
-.attraction-hero .breadcrumbs { margin-bottom: 28px; }
-.attraction-hero .experience-hero-grid { grid-template-columns: minmax(0, 700px); min-height: 350px; padding-bottom: 32px; }
+.attraction-hero .breadcrumbs { margin-bottom: 24px; }
+.attraction-hero .experience-hero-grid { grid-template-columns: minmax(0, 700px); min-height: 300px; padding-bottom: 24px; }
 .attraction-hero h1 { font-size: clamp(3.8rem, 6.6vw, 6.8rem); }
 .attraction-hero .experience-tagline { margin-top: 20px; font-size: clamp(1.15rem, 2vw, 1.65rem); }
 .attraction-hero .experience-summary { max-width: 680px; margin-top: 16px; font-size: clamp(.94rem, 1.3vw, 1.08rem); line-height: 1.6; }
 .attraction-hero-copy { padding-block: 12px; }
-.attraction-stats > div { display: grid; min-height: 104px; grid-template-columns: 44px 1fr; align-items: center; gap: 16px; }
+.attraction-stats { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.attraction-stats > div { display: grid; min-height: 96px; grid-template-columns: 42px 1fr; align-items: center; gap: 13px; padding-inline: 20px; }
 .attraction-stat-icon { display: grid; width: 46px; height: 46px; place-items: center; color: var(--brand-gold); border: 1px solid rgb(255 255 255 / 15%); border-radius: 14px; background: rgb(255 255 255 / 6%); }
 .attraction-stat-icon svg { width: 25px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.65; }
 .attraction-stat-copy { min-width: 0; }
@@ -345,12 +346,13 @@ h1 em { color: var(--brand-sky); font-style: normal; }
 .attraction-subnav-title i { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-coral); box-shadow: 0 0 0 6px rgb(242 105 92 / 12%); }
 .attraction-subnav-links { display: flex; min-width: 0; align-self: stretch; gap: clamp(24px, 3vw, 42px); overflow-x: auto; scrollbar-width: none; }
 .attraction-subnav-links::-webkit-scrollbar { display: none; }
-.attraction-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: rgb(255 255 255 / 60%); font-size: .83rem; font-weight: 760; text-decoration: none; transition: color 180ms var(--ease-out); }
+.attraction-subnav-links a { position: relative; display: flex; flex: 0 0 auto; align-items: center; color: rgb(255 255 255 / 60%); font-size: .95rem; font-weight: 760; text-decoration: none; transition: color 180ms var(--ease-out); }
 .attraction-subnav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 4px; content: ""; background: var(--brand-gold); scale: 0 1; transition: scale 180ms var(--ease-out); }
 .attraction-subnav-links a:hover, .attraction-subnav-links a.is-active { color: white; }
 .attraction-subnav-links a:hover::after, .attraction-subnav-links a.is-active::after { scale: 1; }
 .attraction-overview-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(330px, 400px); align-items: start; gap: clamp(50px, 8vw, 110px); }
 .attraction-experience .experience-section { padding: 88px 0; }
+.attraction-experience .attraction-overview { padding-top: 50px; }
 .attraction-overview-copy h2, .attraction-reviews-section h2, .attraction-next-card h2 { margin: 0; color: var(--text-strong); font-size: clamp(3rem, 5.2vw, 5.4rem); line-height: .91; letter-spacing: -.07em; }
 .attraction-overview-copy > p:not(.eyebrow) { max-width: 690px; color: var(--muted); line-height: 1.8; }
 .attraction-overview-copy .overview-lede { margin-top: 30px; color: var(--text); font-size: 1.15rem; }
@@ -436,11 +438,11 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .experience-hero { padding-top: 100px; }
   .country-hero { background-position: 68% center; }
   .park-hero { background-position: 67% center; }
-  .attraction-hero { padding-top: 84px; background-image: linear-gradient(90deg, rgb(18 10 7 / 94%), rgb(29 13 8 / 44%)), linear-gradient(to top, rgb(20 10 7 / 74%), transparent 48%), url("/images/experiences/wicker-man-hero.webp"); background-position: 68% center; }
+  .attraction-hero { padding-top: 80px; background-image: linear-gradient(90deg, rgb(18 10 7 / 94%), rgb(29 13 8 / 44%)), linear-gradient(to top, rgb(20 10 7 / 74%), transparent 48%), url("/images/experiences/wicker-man-hero.webp"); background-position: 68% center; }
   .breadcrumbs { margin-bottom: 40px; }
   .experience-hero-grid { min-height: 440px; padding-bottom: 52px; }
   .attraction-hero .breadcrumbs { margin-bottom: 24px; }
-  .attraction-hero .experience-hero-grid { min-height: 380px; padding-bottom: 24px; }
+  .attraction-hero .experience-hero-grid { min-height: 340px; padding-bottom: 20px; }
   .attraction-hero .experience-tagline { margin-top: 16px; }
   .attraction-hero .experience-summary { margin-top: 14px; font-size: .94rem; line-height: 1.55; }
   .attraction-stat-icon { width: 38px; height: 38px; border-radius: 12px; }
@@ -451,9 +453,13 @@ h1 em { color: var(--brand-sky); font-style: normal; }
   .experience-stats { grid-template-columns: 1fr 1fr; }
   .experience-stats > div { min-height: 96px; padding: 22px 18px; border-bottom: 1px solid rgb(255 255 255 / 11%); }
   .experience-stats > div:nth-child(2) { border-right: 0; }
-  .attraction-stats > div { min-height: 82px; grid-template-columns: 36px 1fr; gap: 10px; padding: 12px; }
+  .attraction-stats { display: flex; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .attraction-stats::-webkit-scrollbar { display: none; }
+  .attraction-stats > div { flex: 0 0 154px; min-height: 82px; grid-template-columns: 36px 1fr; gap: 10px; padding: 12px; border-bottom: 0; scroll-snap-align: start; }
+  .attraction-stats > div:nth-child(2) { border-right: 1px solid rgb(255 255 255 / 11%); }
   .experience-section { padding: 80px 0; }
   .attraction-experience .experience-section { padding: 64px 0; }
+  .attraction-experience .attraction-overview { padding-top: 36px; }
   .attraction-subnav { top: 68px; }
   .attraction-subnav-inner { min-height: 68px; }
   .attraction-subnav-title { display: none; }

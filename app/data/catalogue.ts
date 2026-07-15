@@ -130,6 +130,7 @@ export const attractions: Attraction[] = [
       { label: "Track length", value: "Over 2,000 ft" },
       { label: "Opened", value: "2018" },
       { label: "Minimum height", value: "1.2 m" },
+      { label: "Thrill level", value: "High" },
     ],
     experience: [
       {
