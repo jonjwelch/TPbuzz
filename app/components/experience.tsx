@@ -64,6 +64,39 @@ export function AttractionStatGrid({ stats }: { stats: Array<{ label: string; va
   );
 }
 
+type ParkStatIcon = "calendar" | "location" | "estate" | "stay" | "guide";
+
+function ParkStatIconGraphic({ type }: { type: ParkStatIcon }) {
+  if (type === "calendar") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" /><path d="M8 3v4M16 3v4M4 10h16" /><path d="M8 14h8M8 17h5" /></svg>;
+  }
+  if (type === "location") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg>;
+  }
+  if (type === "estate") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11" /><path d="M8 21v-7h8v7M3 21h18M9 8V3h3" /></svg>;
+  }
+  if (type === "stay") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19v-9M20 19v-6a3 3 0 0 0-3-3H9" /><path d="M4 15h16M4 19v2M20 19v2" /><circle cx="7" cy="8" r="2" /></svg>;
+  }
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z" /><path d="M8 8h7M8 12h7M8 16h4M19 20a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3" /></svg>;
+}
+
+export function ParkStatGrid({ stats }: { stats: Array<{ label: string; value: string }> }) {
+  const icons: ParkStatIcon[] = ["calendar", "location", "estate", "stay", "guide"];
+
+  return (
+    <dl className="experience-stats park-stats">
+      {stats.map((stat, index) => (
+        <div key={stat.label}>
+          <span className="park-stat-icon"><ParkStatIconGraphic type={icons[index] ?? "guide"} /></span>
+          <div><dt>{stat.label}</dt><dd>{stat.value}</dd></div>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 export function Timeline({ entries }: { entries: TimelineEntry[] }) {
   return (
     <ol className="timeline">
